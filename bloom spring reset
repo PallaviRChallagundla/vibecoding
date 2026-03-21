@@ -1,1 +1,1236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#2d5a3f">
+<meta name="description" content="Bloom — Your spring home reset ritual. Room by room. Petal by petal.">
+<meta property="og:title" content="Bloom · Spring Home Reset 2026">
+<meta property="og:description" content="Transform your home for spring in 7 days. A guided ritual for busy women.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80">
+<title>Bloom · Spring Home Reset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root{
+  --sage:#2d5a3f;--sage2:#3d7554;--sage3:#6aab80;--sage4:#a8d4b4;--sagep:#edf6f0;
+  --cream:#faf8f3;--petal:#f0e4da;--blush:#e8d0c4;
+  --gold:#b8862a;--goldp:#fbf4e0;--goldb:#e0ca80;
+  --rose:#b85a50;--lavp:#f3f0f8;--lavbdr:#c0b0e0;
+  --ink:#181816;--mid:#525248;--soft:#908d84;--border:#e0d8ce;--white:#fff;
+  --r:13px;--rl:20px;--rxl:28px;
+  --sh:0 2px 16px rgba(0,0,0,.06);--sh2:0 8px 40px rgba(0,0,0,.1);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--cream);font-family:'Outfit',sans-serif;color:var(--ink);font-size:15px;min-height:100vh}
+#app{max-width:430px;margin:0 auto;background:var(--white);min-height:100vh;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+#screen{min-height:100vh}
+.page{animation:pi .32s cubic-bezier(.4,0,.2,1) both}
+@keyframes pi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SPRING ANIMATIONS ── */
+.petal-shower{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.petal{position:absolute;top:-40px;font-size:18px;animation:petalFall linear forwards;opacity:0}
+@keyframes petalFall{0%{transform:translateY(0) rotate(0deg) translateX(0);opacity:0}10%{opacity:1}90%{opacity:.8}100%{transform:translateY(110vh) rotate(720deg) translateX(60px);opacity:0}}
+.breeze-circle{border-radius:50%;border:2px solid rgba(168,212,180,.6);animation:breezeOut .8s ease-out forwards;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:9998}
+@keyframes breezeOut{0%{width:60px;height:60px;opacity:1;margin:-30px 0 0 -30px}100%{width:350px;height:350px;opacity:0;margin:-175px 0 0 -175px}}
+
+/* ── TYPE ── */
+.serif{font-family:'Cormorant',serif}
+.t-body{font-size:13px;color:var(--mid);line-height:1.8;font-weight:300}
+.t-label{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--soft)}
+
+/* ── BUTTONS ── */
+.btn{display:block;width:100%;padding:15px;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-align:center;border:none;transition:all .2s}
+.btn-p{background:var(--sage);color:#fff}.btn-p:hover{background:var(--sage2)}.btn-p:active{transform:scale(.98)}
+.btn-g{background:var(--gold);color:#fff}
+.btn-o{background:transparent;border:1.5px solid var(--sage);color:var(--sage);margin-top:10px}.btn-o:hover{background:var(--sagep)}
+.btn-gh{background:none;border:none;color:var(--soft);font-size:13px;cursor:pointer;font-family:'Outfit',sans-serif;padding:6px 0;font-weight:300}
+.btn-sm{padding:10px 20px;width:auto;display:inline-block;font-size:13px}
+
+/* ── LAYOUT ── */
+.px{padding:0 1.375rem}.pt{padding-top:1.5rem}.pb{padding-bottom:2.5rem}
+.gap{height:.875rem}.gap2{height:2rem}
+
+/* ── LANDING PAGE ── */
+.landing-hero{position:relative;min-height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.lh-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80');background-size:cover;background-position:center}
+.lh-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,40,28,.2) 0%,rgba(20,40,28,.6) 50%,rgba(20,40,28,.95) 100%)}
+.lh-content{position:relative;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.5rem 2.5rem}
+.lh-logo{font-family:'Cormorant',serif;font-size:28px;font-style:italic;color:rgba(255,255,255,.9);letter-spacing:3px;margin-bottom:1.5rem}
+.lh-title{font-family:'Cormorant',serif;font-size:46px;font-weight:300;color:#fff;line-height:1.05;margin-bottom:.75rem}
+.lh-title em{font-style:italic;color:var(--sage4)}
+.lh-sub{font-size:13px;color:rgba(255,255,255,.6);line-height:1.85;max-width:280px;margin-bottom:2rem;font-weight:300}
+.lh-cta{display:flex;flex-direction:column;gap:10px}
+.lh-trust{display:flex;gap:16px;margin-top:1.125rem;justify-content:center;flex-wrap:wrap}
+.lh-trust-item{font-size:11px;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:4px}
+
+/* ── AUTH CARD ── */
+.auth-card{background:var(--white);border-radius:var(--rxl) var(--rxl) 0 0;padding:2rem 1.5rem 2.5rem;position:relative;box-shadow:0 -8px 40px rgba(0,0,0,.15)}
+.auth-title{font-family:'Cormorant',serif;font-size:26px;font-weight:400;margin-bottom:.35rem}
+.auth-sub{font-size:13px;color:var(--mid);margin-bottom:1.5rem;font-weight:300;line-height:1.65}
+.auth-tabs{display:flex;background:var(--cream);border-radius:var(--r);padding:3px;margin-bottom:1.375rem;gap:3px}
+.auth-tab{flex:1;padding:9px;text-align:center;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;transition:all .18s;border:none;font-family:'Outfit',sans-serif;background:transparent;color:var(--soft)}
+.auth-tab.on{background:var(--white);color:var(--sage);box-shadow:var(--sh)}
+.auth-input-wrap{margin-bottom:.875rem}
+.auth-label{font-size:11px;font-weight:500;color:var(--mid);margin-bottom:.35rem;display:block}
+.auth-input{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:14px;background:var(--white);color:var(--ink);outline:none;transition:border-color .18s}
+.auth-input:focus{border-color:var(--sage)}
+.auth-input.error{border-color:var(--rose)}
+.auth-error{font-size:12px;color:var(--rose);margin-top:.5rem}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:1.125rem 0}
+.auth-divider-line{flex:1;height:1px;background:var(--border)}
+.auth-divider-text{font-size:12px;color:var(--soft)}
+.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border:1.5px solid var(--border);border-radius:var(--r);background:var(--white);font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink);transition:all .18s;margin-bottom:8px}
+.social-btn:hover{border-color:var(--sage);background:var(--sagep)}
+.social-btn svg{width:18px;height:18px;flex-shrink:0}
+.auth-terms{font-size:11px;color:var(--soft);text-align:center;margin-top:1rem;line-height:1.65}
+
+/* ── NAV ── */
+.nav{display:flex;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:50}
+.nav::-webkit-scrollbar{display:none}
+.nv{flex:1;min-width:48px;padding:13px 2px 12px;font-size:11px;font-weight:500;cursor:pointer;border-bottom:2.5px solid transparent;color:var(--soft);background:none;border-top:none;border-left:none;border-right:none;font-family:'Outfit',sans-serif;text-align:center;white-space:nowrap;transition:all .2s}
+.nv.on{color:var(--sage);border-bottom-color:var(--sage)}
+
+/* ── APP HEADER ── */
+.app-hdr{background:var(--sage);padding:1.125rem 1.375rem;display:flex;align-items:center;justify-content:space-between}
+.app-hdr-logo{font-family:'Cormorant',serif;font-size:20px;font-style:italic;color:#fff;letter-spacing:2px}
+.app-hdr-user{display:flex;align-items:center;gap:8px;cursor:pointer}
+.app-hdr-avatar{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;color:#fff}
+.app-hdr-name{font-size:12px;color:rgba(255,255,255,.7)}
+
+/* ── PROGRESS BAR ── */
+.pbar{background:var(--sage);padding:1rem 1.5rem 1.375rem;position:relative;overflow:hidden}
+.pbar::after{content:'🌸';position:absolute;right:-10px;bottom:-15px;font-size:80px;opacity:.07;pointer-events:none}
+.pbar-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.5rem}
+.pbar-title{font-family:'Cormorant',serif;font-size:18px;color:#fff;font-weight:300;font-style:italic}
+.pbar-pct{font-size:26px;font-weight:500;color:#fff;line-height:1}
+.pbar-sub{font-size:11px;color:rgba(255,255,255,.38);margin-top:2px}
+.pbar-track{background:rgba(255,255,255,.18);border-radius:99px;height:4px;overflow:hidden}
+.pbar-fill{height:100%;background:var(--gold);border-radius:99px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+
+/* ── 7 DAY CHALLENGE ── */
+.challenge-hero{background:linear-gradient(135deg,#1a3a28 0%,var(--sage) 100%);padding:1.75rem 1.375rem 2rem;position:relative;overflow:hidden}
+.challenge-hero::before{content:'7';font-family:'Cormorant',serif;font-size:140px;font-weight:500;color:rgba(255,255,255,.06);position:absolute;right:-10px;top:-20px;line-height:1}
+.ch-tag{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.6rem}
+.ch-title{font-family:'Cormorant',serif;font-size:28px;font-weight:300;color:#fff;line-height:1.15;margin-bottom:.4rem}
+.ch-title em{font-style:italic;color:var(--sage4)}
+.ch-sub{font-size:12px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:1.125rem;font-weight:300;max-width:280px}
+.ch-stats{display:flex;gap:16px}
+.ch-stat{text-align:center;background:rgba(255,255,255,.1);border-radius:var(--r);padding:.625rem 1rem}
+.ch-stat-n{font-family:'Cormorant',serif;font-size:24px;font-weight:400;color:#fff;display:block}
+.ch-stat-l{font-size:10px;color:rgba(255,255,255,.5);margin-top:1px}
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;padding:1rem 1.375rem .875rem}
+.day-dot{border-radius:var(--r);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;border:1.5px solid var(--border);background:var(--cream);position:relative}
+.day-dot.today{border-color:var(--sage);background:var(--sagep)}
+.day-dot.done{background:var(--sage);border-color:var(--sage)}
+.day-dot.done .dd-n{color:#fff}
+.day-dot.done .dd-l{color:rgba(255,255,255,.7)}
+.day-dot.locked{opacity:.4;cursor:default}
+.dd-n{font-size:11px;font-weight:500;color:var(--ink);display:block}
+.dd-l{font-size:9px;color:var(--soft);display:block;margin-top:1px}
+.dd-check{position:absolute;top:3px;right:3px;font-size:9px}
+.day-card{margin:0 1.375rem .875rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh)}
+.dc-header{padding:1.125rem 1.25rem;background:var(--sagep);border-bottom:1px solid var(--border)}
+.dc-day{font-size:10px;font-weight:500;color:var(--soft);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+.dc-title{font-family:'Cormorant',serif;font-size:20px;font-weight:400;color:var(--sage)}
+.dc-sub{font-size:12px;color:var(--sage2);margin-top:3px;font-weight:300}
+.dc-tasks{padding:.875rem 1.25rem 1.25rem}
+.dc-tr{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.dc-tr:last-child{border-bottom:none}
+.dc-chk{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .22s;margin-top:1px;background:var(--white)}
+.dc-chk.on{background:var(--sage);border-color:var(--sage);animation:cp .3s cubic-bezier(.4,0,.2,1)}
+@keyframes cp{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+.dc-chk svg{display:none;width:9px;height:7px;stroke:#fff;stroke-width:2.5;fill:none}
+.dc-chk.on svg{display:block}
+.dc-t{font-size:13px;color:var(--ink);line-height:1.5}
+.dc-tr.done .dc-t{text-decoration:line-through;color:var(--soft)}
+.dc-m{font-size:10px;color:var(--soft);margin-top:2px}
+.challenge-complete{background:var(--sage);border-radius:var(--rl);margin:0 1.375rem .875rem;padding:1.5rem;text-align:center}
+.cc-emoji{font-size:40px;display:block;margin-bottom:.625rem}
+.cc-title{font-family:'Cormorant',serif;font-size:22px;font-weight:300;color:#fff;margin-bottom:.35rem}
+.cc-sub{font-size:12px;color:rgba(255,255,255,.6);line-height:1.7}
+.challenge-cta{margin:0 1.375rem .875rem}
+
+/* ── ROOMS ── */
+.rooms-feed{display:flex;flex-direction:column;gap:0}
+.rc{background:var(--white);border-bottom:1px solid var(--border);cursor:pointer;transition:all .2s;overflow:hidden}
+.rc:active{background:var(--cream)}
+.rc-img{height:110px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.rc-img-ov{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 14px;background:linear-gradient(to top,rgba(0,0,0,.52) 0%,transparent 70%)}
+.rc-tag{font-size:10px;font-weight:500;padding:4px 10px;border-radius:99px;backdrop-filter:blur(8px);background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.25);color:#fff}
+.rc-time{font-size:10px;color:rgba(255,255,255,.9);font-weight:500;background:rgba(0,0,0,.3);padding:3px 8px;border-radius:99px}
+.rc-body{padding:12px 16px 14px}
+.rc-ey{font-size:10px;font-weight:500;color:var(--soft);letter-spacing:.7px;text-transform:uppercase;margin-bottom:2px}
+.rc-title{font-family:'Cormorant',serif;font-size:19px;font-weight:400;color:var(--ink);margin-bottom:4px}
+.rc-desc{font-size:12px;color:var(--mid);line-height:1.65;margin-bottom:8px;font-weight:300}
+.rc-chips{display:flex;gap:5px;margin-bottom:9px;flex-wrap:wrap}
+.chip{font-size:10px;padding:3px 9px;border-radius:99px;border:1px solid var(--border);color:var(--mid);display:flex;align-items:center;gap:3px;white-space:nowrap;background:var(--cream)}
+.rc-foot{display:flex;align-items:center;gap:10px}
+.rc-bar{flex:1;height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+.rc-bfill{height:100%;border-radius:99px;transition:width .6s ease}
+.rc-cnt{font-size:11px;color:var(--soft);white-space:nowrap}
+.rc-btn{font-size:12px;font-weight:500;color:var(--sage);padding:5px 12px;border:1px solid var(--sage);border-radius:99px;background:transparent;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;transition:all .18s}
+.rc-btn.done{background:var(--sage);color:#fff}
+
+/* ── ROOM DETAIL ── */
+.rd-hero{height:180px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.rd-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.65))}
+.rd-hc{position:absolute;bottom:0;left:0;right:0;padding:1.125rem 1.375rem}
+.rd-ey{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:.25rem}
+.rd-h{font-family:'Cormorant',serif;font-size:26px;font-weight:300;color:#fff;line-height:1.15}
+.rd-h em{font-style:italic}
+.rd-topbar{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.375rem;border-bottom:1px solid var(--border)}
+.rd-body{padding:1.125rem 1.375rem 2.5rem}
+.rd-quote{font-family:'Cormorant',serif;font-size:15px;font-style:italic;line-height:1.8;color:var(--mid);margin-bottom:1.125rem;padding-bottom:1.125rem;border-bottom:1px solid var(--border)}
+.v3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:1.125rem}
+.v3c{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:9px 7px;text-align:center}
+.v3i{font-size:17px;display:block;margin-bottom:3px}
+.v3l{font-size:9px;font-weight:500;color:var(--soft);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:2px}
+.v3v{font-family:'Cormorant',serif;font-size:12px;font-style:italic;color:var(--ink);display:block;line-height:1.4}
+.tasks-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:.875rem}
+.tasks-pill{font-size:11px;padding:3px 10px;border-radius:99px;background:var(--sagep);color:var(--sage);font-weight:500}
+.tr{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .15s;user-select:none}
+.tr:last-child{border-bottom:none}
+.tr.lk{cursor:default;opacity:.28}
+.tr:not(.lk):active{opacity:.65}
+.chk{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .22s;margin-top:1px;background:var(--white)}
+.chk.on{background:var(--sage);border-color:var(--sage);animation:cp .3s cubic-bezier(.4,0,.2,1)}
+.chk svg{display:none;width:10px;height:8px;stroke:#fff;stroke-width:2.5;fill:none}
+.chk.on svg{display:block}
+.lkic{width:12px;height:12px;flex-shrink:0;opacity:.3;margin-top:3px}
+.tn{font-size:13px;line-height:1.5;color:var(--ink)}
+.tr.done .tn{text-decoration:line-through;color:var(--soft)}
+.tmeta{font-size:11px;color:var(--soft);margin-top:2px}
+.tb{font-size:10px;padding:1px 6px;border-radius:99px;font-weight:500;margin-left:4px;vertical-align:middle}
+.tbd{background:#e5eee8;color:#1a4228}.tbq{background:#fdf0db;color:#7a4a06}
+.tbr{background:#e5edf8;color:#1a3a6b}.tbc{background:#fae5e8;color:#6b1a22}
+
+/* ── TIMER ── */
+.timer-box{background:var(--sage);border-radius:var(--rl);margin:0 1.375rem 12px;padding:1.75rem 1.25rem 1.5rem;text-align:center;box-shadow:var(--sh2)}
+.t-lbl{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.38);text-transform:uppercase;margin-bottom:.5rem}
+.t-dig{font-family:'Cormorant',serif;font-size:70px;font-weight:300;color:#fff;letter-spacing:5px;line-height:1;font-variant-numeric:tabular-nums}
+.t-track{background:rgba(255,255,255,.12);border-radius:99px;height:4px;margin:1rem 0;overflow:hidden}
+.t-fill{height:100%;background:var(--gold);border-radius:99px;transition:width 1s linear}
+.t-btns{display:flex;gap:8px;justify-content:center;margin-top:.875rem}
+.tbtn2{padding:11px 26px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;font-family:'Outfit',sans-serif;border:none;transition:all .18s}
+.tb2-s{background:var(--gold);color:#fff}.tb2-r{background:rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.timer-mode-bar{display:flex;gap:6px;padding:0 1.375rem;margin-bottom:.875rem;flex-wrap:wrap}
+.tm-btn{padding:8px 12px;border-radius:99px;font-size:11px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--mid);font-family:'Outfit',sans-serif;transition:all .18s}
+.tm-btn.on{background:var(--sage);border-color:var(--sage);color:#fff}
+.custom-timer-box{background:var(--cream);border:1px solid var(--border);border-radius:var(--rl);padding:1.125rem;margin:0 1.375rem 1rem}
+.ct-row{display:flex;gap:8px;align-items:center;margin-top:.5rem}
+.ct-in{width:72px;padding:10px 12px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:18px;font-weight:500;text-align:center;background:var(--white);color:var(--ink);outline:none}
+.ct-in:focus{border-color:var(--sage)}
+.ct-set{padding:10px 16px;background:var(--sage);color:#fff;border:none;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer}
+
+/* ── STREAK ── */
+.streak-band{background:var(--goldp);border-bottom:1px solid var(--goldb);padding:.875rem 1.375rem;display:flex;align-items:center;gap:12px}
+.flame{font-size:24px;animation:fl 2s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.1) rotate(2deg)}}
+.streak-badge{margin-left:auto;background:var(--gold);color:#fff;font-size:11px;font-weight:500;padding:4px 10px;border-radius:99px}
+
+/* ── ZONE BAND ── */
+.zone-band{background:var(--white);border-bottom:1px solid var(--border);padding:.75rem 1.375rem}
+.zone-row{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
+.zone-row::-webkit-scrollbar{display:none}
+.zone-pill{flex-shrink:0;padding:6px 12px;border-radius:99px;border:1.5px solid var(--border);background:var(--cream);cursor:pointer;transition:all .2s}
+.zone-pill.active{background:var(--sage);border-color:var(--sage);color:#fff}
+.zp-name{font-size:11px;font-weight:500;display:block;white-space:nowrap}
+.zp-sub{font-size:9px;opacity:.65;display:block;margin-top:1px}
+
+/* ── LOCK NUDGE ── */
+.lock-n{background:var(--goldp);border:1.5px solid var(--goldb);padding:.875rem 1.375rem;display:flex;align-items:center;justify-content:space-between;margin:.5rem 1.375rem;border-radius:var(--r);cursor:pointer;transition:opacity .18s}
+.lock-n:hover{opacity:.88}
+.ln-t{font-weight:500;font-size:13px;color:#5a3808}
+.ln-s{font-size:11px;color:#8a6018;margin-top:2px}
+.ln-cta{font-size:13px;font-weight:500;color:var(--gold);white-space:nowrap}
+
+/* ── AFFIRM ── */
+.affirm{background:var(--petal);border:1px solid var(--blush);border-radius:var(--rl);padding:1rem 1.25rem;margin:1rem 1.375rem}
+.affirm-t{font-family:'Cormorant',serif;font-size:15px;font-style:italic;color:#5a2218;line-height:1.8}
+
+/* ── PROFILE ── */
+.profile-card{margin:1.375rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;box-shadow:var(--sh)}
+.pc-header{background:var(--sage);padding:1.5rem;display:flex;align-items:center;gap:14px}
+.pc-avatar{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:500;color:#fff}
+.pc-name{font-family:'Cormorant',serif;font-size:20px;color:#fff;font-weight:400}
+.pc-email{font-size:12px;color:rgba(255,255,255,.55);margin-top:2px}
+.pc-body{padding:1.125rem}
+.pc-row{display:flex;align-items:center;justify-content:space-between;padding:.875rem 0;border-bottom:1px solid var(--border)}
+.pc-row:last-child{border-bottom:none}
+.pc-lbl{font-size:13px;color:var(--mid)}
+.pc-val{font-size:13px;font-weight:500;color:var(--ink)}
+.pc-signout{width:100%;margin-top:1rem;padding:13px;background:var(--rosep);color:var(--rose);border:1.5px solid #f0b0a8;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .18s}
+.pc-signout:hover{background:#fde0dc}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--sage);color:#fff;padding:12px 20px;border-radius:var(--r);font-size:13px;font-weight:500;z-index:9990;animation:tIn .4s cubic-bezier(.4,0,.2,1) both,tOut .4s .2s ease 2.5s both;white-space:nowrap;box-shadow:var(--sh2)}
+@keyframes tIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes tOut{from{opacity:1}to{opacity:0;transform:translateX(-50%) translateY(10px)}}
+
+/* ── LOADING ── */
+.loading-scr{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;background:var(--sage);gap:1rem}
+.loading-logo{font-family:'Cormorant',serif;font-size:36px;font-style:italic;color:#fff;letter-spacing:3px}
+.loading-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);animation:pulse 1.4s ease-in-out infinite}
+.loading-dot:nth-child(2){animation-delay:.2s}
+.loading-dot:nth-child(3){animation-delay:.4s}
+.loading-dots{display:flex;gap:6px}
+@keyframes pulse{0%,80%,100%{transform:scale(0);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+/* ── DONE ── */
+.done-scr{text-align:center;padding:5rem 2rem}
+
+/* ── SPINNER ── */
+.spinner{width:32px;height:32px;border:2.5px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Bloom">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Bloom">
+<link rel="manifest" href="data:application/json,{
+  %22name%22:%22Bloom%20%E2%80%94%20Spring%20Home%20Reset%22,
+  %22short_name%22:%22Bloom%22,
+  %22description%22:%22Your%20spring%20home%20reset%20ritual%22,
+  %22start_url%22:%22/%22,
+  %22display%22:%22standalone%22,
+  %22background_color%22:%22%232d5a3f%22,
+  %22theme_color%22:%22%232d5a3f%22,
+  %22orientation%22:%22portrait%22,
+  %22icons%22:[{%22src%22:%22https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=192%22,%22sizes%22:%22192x192%22,%22type%22:%22image/png%22},{%22src%22:%22https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=512%22,%22sizes%22:%22512x512%22,%22type%22:%22image/png%22}]
+}">
+<link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=180">
+</head>
+<body>
+<div id="app"><div id="screen" class="page"></div></div>
+<div id="petals" class="petal-shower" style="display:none"></div>
+
+<script>
+// ══════════════════════════════════════════════════════════════════════════════
+// CONFIGURATION — Replace these with your real values after setup
+// ══════════════════════════════════════════════════════════════════════════════
+const SUPABASE_URL = 'https://qsdxehpwjcmwtvacpwnu.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFzZHhlaHB3amNtd3R2YWNwd251Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwOTk5MjksImV4cCI6MjA4OTY3NTkyOX0.fO61u9rQMlEKcOrEQHt1BzMqiXwAESXJLZpFHj4KK1c';
+const AMZN = 'bloomapp-20';                       // your Amazon Associates tag
+
+// Initialize Supabase
+let db = null;
+try {
+  db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} catch(e) {
+  console.warn('Supabase not configured yet — running in local mode');
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PHOTOS
+// ══════════════════════════════════════════════════════════════════════════════
+const PH = {
+  cover:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80',
+  kitchen:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80',
+  living:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80',
+  entryway:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+  bedroom:'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80',
+  bathroom:'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
+  office:'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=800&q=80',
+  kids:'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=800&q=80',
+  dining:'https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=800&q=80',
+  guest:'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80',
+  systems:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// 7-DAY CHALLENGE DATA
+// ══════════════════════════════════════════════════════════════════════════════
+const CHALLENGE_DAYS = [
+  {
+    day:1, title:'First breath of spring', emoji:'🌱',
+    theme:'Clear the surfaces that greet you every morning',
+    sub:'Today is about visible wins. Start in the kitchen — the room that sets your whole day.',
+    tasks:[
+      {id:'c1_1',t:'Clear every kitchen counter completely',m:10},
+      {id:'c1_2',t:'Throw out expired food from the fridge door',m:10},
+      {id:'c1_3',t:'Wipe down the stovetop and microwave exterior',m:10},
+      {id:'c1_4',t:'Buy one spring flower — eucalyptus or tulips',m:15},
+      {id:'c1_5',t:'Light a new candle in the main space',m:2},
+    ]
+  },
+  {
+    day:2, title:'The entryway ritual', emoji:'🚪',
+    theme:'Your first impression starts here',
+    sub:'The 30 minutes you spend here will change how you feel every time you come home.',
+    tasks:[
+      {id:'c2_1',t:'Remove all shoes — donate any not worn this year',m:15},
+      {id:'c2_2',t:'Wipe the front door inside and the handle',m:10},
+      {id:'c2_3',t:'Clear the console or entry surface completely',m:10},
+      {id:'c2_4',t:'Place one bud vase with a single stem',m:5},
+    ]
+  },
+  {
+    day:3, title:'Bedroom sanctuary', emoji:'🌸',
+    theme:'The room where you restore yourself',
+    sub:'Clean bedding, a clear nightstand and one candle. That\'s the whole reset.',
+    tasks:[
+      {id:'c3_1',t:'Strip and wash all bedding — hottest setting',m:40},
+      {id:'c3_2',t:'Clear the nightstand — keep only 3 things on it',m:10},
+      {id:'c3_3',t:'Declutter one drawer — donate or bin',m:20},
+      {id:'c3_4',t:'Place lavender or a small candle on the nightstand',m:5},
+      {id:'c3_5',t:'Open the window for 10 minutes — air the room',m:1},
+    ]
+  },
+  {
+    day:4, title:'Bathroom spa', emoji:'🛁',
+    theme:'Turn your bathroom into a ritual space',
+    sub:'Toss the expired. Clean the grout. Add eucalyptus. Done.',
+    tasks:[
+      {id:'c4_1',t:'Throw out every expired product in the bathroom',m:15},
+      {id:'c4_2',t:'Scrub the sink, polish taps, clean mirror',m:15},
+      {id:'c4_3',t:'Hang a eucalyptus bundle from the shower head',m:5},
+      {id:'c4_4',t:'Replace old hand towels with fresh white ones',m:5},
+    ]
+  },
+  {
+    day:5, title:'Living room exhale', emoji:'🕯️',
+    theme:'The space that should ask nothing of you',
+    sub:'Wash the throws. Style one surface. That\'s it — the room transforms.',
+    tasks:[
+      {id:'c5_1',t:'Wash all throw blankets and pillow covers',m:30},
+      {id:'c5_2',t:'Dust all shelves and wipe hard surfaces',m:20},
+      {id:'c5_3',t:'Declutter one shelf — donate, bin or relocate',m:15},
+      {id:'c5_4',t:'Style one surface: candle + vase + one object',m:10},
+    ]
+  },
+  {
+    day:6, title:'The deep work', emoji:'💪',
+    theme:'The invisible tasks that matter most',
+    sub:'These are the ones everyone avoids. You won\'t. This is what separates a reset from a tidy.',
+    tasks:[
+      {id:'c6_1',t:'Replace HVAC filter',m:10},
+      {id:'c6_2',t:'Wipe every light switch and door handle in the home',m:10},
+      {id:'c6_3',t:'Test smoke detectors and replace batteries',m:5},
+      {id:'c6_4',t:'Wipe down all baseboards in the main rooms',m:20},
+      {id:'c6_5',t:'Throw out anything broken you\'ve been keeping',m:10},
+    ]
+  },
+  {
+    day:7, title:'Seal it in', emoji:'🌺',
+    theme:'You didn\'t just clean. You reset.',
+    sub:'Today is about systems and celebration. One last round — then flowers.',
+    tasks:[
+      {id:'c7_1',t:'Do a full home walk-through — notice how different it feels',m:10},
+      {id:'c7_2',t:'Set up a small weekly reset habit (5 min per room)',m:10},
+      {id:'c7_3',t:'Buy yourself a proper bunch of flowers',m:20},
+      {id:'c7_4',t:'Place them where you spend the most time',m:5},
+      {id:'c7_5',t:'Light your favourite candle. You are done.',m:2},
+    ]
+  },
+];
+
+// ══════════════════════════════════════════════════════════════════════════════
+// ROOMS DATA (condensed)
+// ══════════════════════════════════════════════════════════════════════════════
+const ROOMS = [
+  {id:'kitchen',label:'Kitchen',emoji:'🍋',zone:1,tag:'Zone 1 · Start here',title:'Where every morning begins',desc:"A clear kitchen changes the tone of your day before you've had coffee.",candle:"Mrs. Meyer's Lemon Verbena",candleWhere:'$4.49 · Target',flower:'Eucalyptus in a glass jar · $4 · Trader Joe\'s',swap:'Swap dish soap for Mrs. Meyer\'s in a glass pump',tasks:[{id:'k1',t:'Throw out everything expired — fridge, freezer, pantry',m:20,b:'tbc',e:'🗑️',free:true},{id:'k2',t:'Pull the fridge out — vacuum coils, clean behind',m:15,b:'tbd',e:'🧹',free:true},{id:'k3',t:'Deep clean the oven: racks, walls, door glass',m:30,b:'tbd',e:'🔥',free:false},{id:'k4',t:'Degrease cabinet fronts, handles and range hood',m:20,b:'tbd',e:'🧴',free:false},{id:'k5',t:'Descale kettle and coffee maker with white vinegar',m:10,b:'tbr',e:'☕',free:false},{id:'k6',t:'Steam-clean the microwave (vinegar + water, 5 min)',m:10,b:'tbq',e:'💨',free:false},{id:'k7',t:'Reorganise pantry by category',m:25,b:'tbc',e:'📦',free:false},{id:'k8',t:'Swap winter dish towels for spring linens',m:5,b:'tbr',e:'🌿',free:false}]},
+  {id:'living',label:'Living room',emoji:'🕯️',zone:1,tag:'Zone 1',title:'Where you finally exhale',desc:"This room should ask nothing of you. Reset it so it actually can.",candle:'Capri Blue Volcano',candleWhere:'$20 · Target',flower:'5 stems ranunculus · $6.99 · Trader Joe\'s',swap:'Swap chunky knit for linen throw in sage',tasks:[{id:'l1',t:'Deep vacuum every sofa cushion and base',m:15,b:'tbd',e:'🛋️',free:true},{id:'l2',t:'Wipe all hard surfaces — shelves, sills, consoles',m:15,b:'tbq',e:'✨',free:true},{id:'l3',t:'Wash all throws and pillow covers on hot',m:30,b:'tbr',e:'🧺',free:false},{id:'l4',t:'Clean windows inside — glass, frames and tracks',m:20,b:'tbr',e:'🪟',free:false},{id:'l5',t:'Dust ceiling fan, light fittings and lampshades',m:10,b:'tbq',e:'💡',free:false},{id:'l6',t:'Declutter every surface — donate, bin or relocate',m:20,b:'tbc',e:'📚',free:false},{id:'l7',t:'Vacuum rugs — move furniture to reach underneath',m:20,b:'tbd',e:'🪄',free:false},{id:'l8',t:'Style one surface: candle + vase + one object',m:10,b:'tbr',e:'🕯️',free:false}]},
+  {id:'entryway',label:'Entryway',emoji:'🚪',zone:1,tag:'Zone 1',title:'The first thing you feel',desc:"Walking in should feel like arrival.",candle:'Yankee Clean Cotton',candleWhere:'$12 · Walmart',flower:'One bud vase, one tulip · $3',swap:'One hook rail — coats off chairs',tasks:[{id:'e1',t:'Remove shoes — donate any not worn in a year',m:15,b:'tbc',e:'👟',free:true},{id:'e2',t:'Wipe front door inside, outside and handle',m:10,b:'tbq',e:'🚪',free:true},{id:'e3',t:'Clear every surface completely',m:15,b:'tbc',e:'🗂️',free:false},{id:'e4',t:'Wash or replace the doormat',m:10,b:'tbr',e:'🏠',free:false},{id:'e5',t:'Hang all coats in their spots',m:10,b:'tbc',e:'🧥',free:false},{id:'e6',t:'Place one welcoming detail',m:5,b:'tbr',e:'🌿',free:false}]},
+  {id:'bedroom',label:'Bedroom',emoji:'🌸',zone:2,tag:'Zone 2',title:'Your most important room',desc:"Clutter here costs you sleep.",candle:'Voluspa French Cade Lavender',candleWhere:'$18 · Sephora',flower:'Dried lavender bundle · $5 · HomeGoods',swap:'Linen duvet in sage or oatmeal',tasks:[{id:'b1',t:'Strip and wash all bedding on hot',m:40,b:'tbr',e:'🛏️',free:true},{id:'b2',t:'Flip mattress, vacuum the full surface',m:10,b:'tbd',e:'😴',free:true},{id:'b3',t:'Baking soda on mattress — 2 hours, vacuum off',m:5,b:'tbd',e:'✨',free:false},{id:'b4',t:'Declutter wardrobe: donate vs keep',m:45,b:'tbc',e:'👗',free:false},{id:'b5',t:'Move winter layers back, spring forward',m:20,b:'tbr',e:'🌸',free:false},{id:'b6',t:'Clear the nightstand — 3 things only',m:10,b:'tbc',e:'🕯️',free:false},{id:'b7',t:'Dust all furniture and mirrors',m:10,b:'tbq',e:'🪞',free:false},{id:'b8',t:'Style nightstand: lamp, candle, one stem',m:10,b:'tbr',e:'🌿',free:false}]},
+  {id:'bathroom',label:'Bathroom',emoji:'🛁',zone:2,tag:'Zone 2',title:'Your private spa',desc:"Think boutique hotel, not hospital.",candle:'Paddywax Eucalyptus + Sage',candleWhere:'$14.99 · Target',flower:'Eucalyptus from shower head · $4',swap:'Glass dispensers for soap and shampoo',tasks:[{id:'ba1',t:'Toss all expired skincare and beauty products',m:15,b:'tbc',e:'💊',free:true},{id:'ba2',t:'Scrub all tile grout with a stiff brush',m:20,b:'tbd',e:'🧱',free:true},{id:'ba3',t:'Soak showerhead overnight in white vinegar',m:5,b:'tbr',e:'🚿',free:false},{id:'ba4',t:'Deep clean toilet — under rim, base, behind',m:15,b:'tbd',e:'🚽',free:false},{id:'ba5',t:'Wash shower curtain liner with baking soda',m:30,b:'tbr',e:'🪣',free:false},{id:'ba6',t:'Empty cabinets, wipe shelves, reorganise',m:15,b:'tbc',e:'🗄️',free:false},{id:'ba7',t:'Replace bath mats and hand towels',m:5,b:'tbr',e:'🛁',free:false},{id:'ba8',t:'Scrub sink, polish taps, clean mirror',m:10,b:'tbq',e:'🪥',free:false}]},
+  {id:'office',label:'Home office',emoji:'🌱',zone:2,tag:'Zone 2',title:'Where you do your best work',desc:"A clear desk tells your brain to think.",candle:'Malin+Goetz Rosemary',candleWhere:'$22 · Sephora',flower:'Herb pot on the corner · $3',swap:'One cable management box',tasks:[{id:'o1',t:'Clear desk completely, empty every drawer',m:20,b:'tbc',e:'🖥️',free:true},{id:'o2',t:'Wipe monitor, keyboard and mouse',m:10,b:'tbq',e:'⌨️',free:true},{id:'o3',t:'Sort and label all cables',m:15,b:'tbr',e:'🔌',free:false},{id:'o4',t:'File or shred every paper pile',m:30,b:'tbc',e:'📄',free:false},{id:'o5',t:'Wipe chair, shelves and all surfaces',m:10,b:'tbq',e:'🪑',free:false},{id:'o6',t:'Set up simple in/out tray system',m:10,b:'tbr',e:'📥',free:false}]},
+  {id:'kids',label:"Kids' rooms",emoji:'🎨',zone:2,tag:'Zone 2',title:'Their sanctuary too',desc:"45 min timer. Kids help. Make it a game.",candle:'Kid-safe linen spray',candleWhere:'$8 · Target',flower:'Small potted plant they can water',swap:'Clear storage bins',tasks:[{id:'kd1',t:'Donate toys they have outgrown',m:30,b:'tbc',e:'🧸',free:true},{id:'kd2',t:'Wipe all furniture and switches',m:15,b:'tbq',e:'✨',free:true},{id:'kd3',t:'Wash all bedding and stuffed animals',m:40,b:'tbr',e:'🧺',free:false},{id:'kd4',t:'Vacuum mattress and floor under bed',m:10,b:'tbd',e:'🛏️',free:false},{id:'kd5',t:'Organise books and games into clear bins',m:20,b:'tbc',e:'📚',free:false},{id:'kd6',t:'Wipe all windows and sills',m:10,b:'tbq',e:'🪟',free:false}]},
+  {id:'dining',label:'Dining room',emoji:'🌷',zone:3,tag:'Zone 3',title:'The table you mean to set',desc:"It became a dumping ground. Reset it.",candle:'Nest Grapefruit',candleWhere:'$18 · Target',flower:'5 tulips or daffodils · $4',swap:'Linen table runner in white or natural',tasks:[{id:'dn1',t:'Clear the table — not a surface for mail',m:10,b:'tbc',e:'🍽️',free:true},{id:'dn2',t:'Polish table and wipe all chairs',m:15,b:'tbq',e:'✨',free:true},{id:'dn3',t:'Wash table runner and placemats',m:20,b:'tbr',e:'🧺',free:false},{id:'dn4',t:'Wipe sideboard and reorganise serving pieces',m:15,b:'tbc',e:'🪵',free:false},{id:'dn5',t:'Clean the overhead light fixture',m:10,b:'tbq',e:'💡',free:false},{id:'dn6',t:'Style: candle, vase, linen runner',m:10,b:'tbr',e:'🌷',free:false}]},
+  {id:'guest',label:'Guest room',emoji:'🛏️',zone:3,tag:'Zone 3',title:'The room that shows you care',desc:"Just needs to feel fresh and welcoming.",candle:'Voluspa Cade Lavender',candleWhere:'$14 · Target',flower:'Grocery tulip bunch on nightstand',swap:'Small tray with candle, glass and book',tasks:[{id:'gr1',t:'Strip and freshly wash all guest bedding',m:40,b:'tbr',e:'🛏️',free:true},{id:'gr2',t:'Remove anything that does not belong',m:20,b:'tbc',e:'🗂️',free:true},{id:'gr3',t:'Dust all furniture and surfaces',m:15,b:'tbq',e:'✨',free:false},{id:'gr4',t:'Clear drawer space for guest belongings',m:10,b:'tbc',e:'🗄️',free:false},{id:'gr5',t:'Hang fresh towels and welcome detail',m:10,b:'tbr',e:'🛁',free:false},{id:'gr6',t:'Style nightstand: lamp, water, candle',m:10,b:'tbr',e:'🕯️',free:false}]},
+  {id:'systems',label:'Home systems',emoji:'🏡',zone:3,tag:'Zone 3',title:'What holds everything together',desc:"One afternoon gives your home a year of freshness.",candle:'Your favourite. You earned it.',candleWhere:'',flower:'Fresh flowers. You deserve them.',swap:'Reed diffuser instead of plug-ins',tasks:[{id:'s1',t:'Replace HVAC and air purifier filters',m:10,b:'tbd',e:'💨',free:true},{id:'s2',t:'Test smoke and CO detectors',m:5,b:'tbq',e:'🔋',free:true},{id:'s3',t:'Replace all burned-out bulbs',m:10,b:'tbq',e:'💡',free:false},{id:'s4',t:'Clean ceiling fans and light fittings',m:15,b:'tbd',e:'🌀',free:false},{id:'s5',t:'Wipe every baseboard and door frame',m:30,b:'tbd',e:'🧹',free:false},{id:'s6',t:'Wash curtains or deep-clean blinds',m:30,b:'tbd',e:'🪟',free:false},{id:'s7',t:'Sanitise switches, handles, remotes',m:10,b:'tbq',e:'🦠',free:false},{id:'s8',t:'Throw out broken items you have been keeping',m:15,b:'tbc',e:'🗑️',free:false},{id:'s9',t:'Open every window 15 minutes',m:1,b:'tbr',e:'🌬️',free:false},{id:'s10',t:'Buy fresh flowers. Place where you spend most time.',m:15,b:'tbr',e:'🌸',free:false}]},
+];
+
+const AFFIRMS = ["You don't have to do it all today. Just the next room.","The woman with the beautiful home did one room on a Tuesday.","A candle lit and one surface cleared is a real reset.","You commute, you work, you parent. Fifteen minutes is enough.","You're not just cleaning. You're taking care of yourself.","One vase of tulips makes everything feel less heavy.","Progress is the only thing that matters today."];
+
+const OBQ = [
+  {q:'How does your home feel right now?',hint:'We personalise your reset around this.',opts:['Completely overwhelmed — I don\'t know where to begin','Pretty cluttered but manageable','Mostly fine, just needs a seasonal refresh','I\'m organised and want a proper deep clean']},
+  {q:'How much time can you give each day?',hint:'There is no wrong answer.',opts:['15–20 minutes is all I have','30–45 minutes before the kids are in bed','Around an hour on weekends','Full weekend warrior — I\'m all in']},
+  {q:'What do you want to feel at the end?',hint:'The emotional outcome matters more.',opts:['Calm — like I can exhale when I walk in','Proud — like anyone could stop by','Renewed — like spring arrived on purpose','Ready — like I finally have it together']},
+];
+
+// ══════════════════════════════════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════════════════════════════════
+const SK = 'bloom_v6';
+const loadLocal = () => { try { const s = localStorage.getItem(SK); return s ? JSON.parse(s) : {}; } catch { return {}; } };
+const saveLocal = () => { try { localStorage.setItem(SK, JSON.stringify(S)); } catch {} };
+
+let S = {
+  // Auth
+  user: null,
+  // App state
+  screen: 'landing',
+  ob: {}, obStep: 0,
+  unlocked: false,
+  tasks: {},
+  challengeTasks: {},
+  activeRoom: null,
+  tab: 'challenge',
+  activeZone: 1,
+  streak: 0, lastActive: null,
+  challengeStarted: false,
+  challengeStartDate: null,
+  tMode: 15, tOn: false, tLeft: 900, tBase: 900,
+  ...loadLocal()
+};
+let TI = null;
+let syncTimeout = null;
+
+const $ = id => document.getElementById(id);
+const render = html => { $('screen').innerHTML = html; };
+const csv = () => '<svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg>';
+const lksv = () => '<svg class="lkic" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="7" width="12" height="9" rx="2"/><path d="M4 7V5a3 3 0 016 0v2"/></svg>';
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const allIds = () => ROOMS.flatMap(r => r.tasks.map(t => t.id));
+const dnCount = () => allIds().filter(id => S.tasks[id]).length;
+const totPct = () => Math.round(dnCount() / allIds().length * 100);
+const rDone = r => r.tasks.filter(t => S.tasks[t.id]).length;
+const rPct = r => Math.round(rDone(r) / r.tasks.length * 100);
+const bl = b => ({tbd:'deep clean',tbq:'quick win',tbr:'refresh',tbc:'declutter'}[b]||'');
+const fmtTime = m => { if(m<60) return m+'min'; const h=Math.floor(m/60),mm=m%60; return mm?`${h}h ${mm}m`:`${h}h`; };
+
+const getChallengeDay = () => {
+  if (!S.challengeStartDate) return 1;
+  const start = new Date(S.challengeStartDate);
+  const now = new Date();
+  const diff = Math.floor((now - start) / 86400000);
+  return Math.min(diff + 1, 7);
+};
+
+const challengeDayDone = (day) => {
+  const d = CHALLENGE_DAYS[day - 1];
+  if (!d) return false;
+  return d.tasks.every(t => S.challengeTasks[t.id]);
+};
+
+const challengeProgress = () => {
+  const allT = CHALLENGE_DAYS.flatMap(d => d.tasks);
+  const done = allT.filter(t => S.challengeTasks[t.id]).length;
+  return { done, total: allT.length, pct: Math.round(done/allT.length*100) };
+};
+
+// ── SUPABASE SYNC ─────────────────────────────────────────────────────────────
+const syncToCloud = async () => {
+  if (!db || !S.user) return;
+  clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(async () => {
+    try {
+      await db.from('bloom_progress').upsert({
+        user_id: S.user.id,
+        tasks: S.tasks,
+        challenge_tasks: S.challengeTasks,
+        streak: S.streak,
+        last_active: S.lastActive,
+        unlocked: S.unlocked,
+        ob: S.ob,
+        challenge_started: S.challengeStarted,
+        challenge_start_date: S.challengeStartDate,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+    } catch(e) { console.warn('Sync failed, saved locally'); }
+  }, 1500);
+};
+
+const loadFromCloud = async () => {
+  if (!db || !S.user) return;
+  try {
+    const { data } = await db.from('bloom_progress').select('*').eq('user_id', S.user.id).single();
+    if (data) {
+      S.tasks = data.tasks || {};
+      S.challengeTasks = data.challenge_tasks || {};
+      S.streak = data.streak || 0;
+      S.lastActive = data.last_active;
+      S.unlocked = data.unlocked || false;
+      S.ob = data.ob || {};
+      S.challengeStarted = data.challenge_started || false;
+      S.challengeStartDate = data.challenge_start_date;
+    }
+  } catch(e) { console.warn('Could not load from cloud, using local data'); }
+};
+
+const save = () => {
+  saveLocal();
+  syncToCloud();
+};
+
+// ── ANIMATIONS ────────────────────────────────────────────────────────────────
+const springPetals = () => {
+  const c = $('petals'); c.style.display = 'block'; c.innerHTML = '';
+  const emojis = ['🌸','🌺','🌼','🌷','🍃','✨','🌿'];
+  for(let i = 0; i < 28; i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+    p.style.cssText = `left:${Math.random()*100}%;animation-duration:${2+Math.random()*3}s;animation-delay:${Math.random()}s;font-size:${14+Math.random()*12}px`;
+    c.appendChild(p);
+  }
+  setTimeout(() => { c.style.display='none'; c.innerHTML=''; }, 5000);
+};
+
+const breezeAnim = () => {
+  for(let i = 0; i < 3; i++){
+    const b = document.createElement('div');
+    b.className = 'breeze-circle';
+    b.style.animationDelay = i*0.15+'s';
+    $('app').appendChild(b);
+    setTimeout(() => b.remove(), 1000);
+  }
+};
+
+const showToast = msg => {
+  const t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  $('app').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+};
+
+const updateStreak = () => {
+  const today = new Date().toDateString();
+  if (S.lastActive === today) return;
+  const yesterday = new Date(Date.now()-86400000).toDateString();
+  S.streak = S.lastActive === yesterday ? (S.streak||0)+1 : 1;
+  S.lastActive = today;
+};
+
+// ── NAVIGATION ────────────────────────────────────────────────────────────────
+const setTab = t => {
+  S.tab = t; S.activeRoom = null; save();
+  const map = {
+    challenge: showChallenge,
+    rooms: showRooms,
+    timer: showTimer,
+    profile: showProfile,
+  };
+  (map[t]||showChallenge)();
+};
+
+const nav = a => `<div class="nav">
+  ${[['challenge','7-Day'],['rooms','Rooms'],['timer','Timer'],['profile','Me']].map(([id,l]) =>
+    `<button class="nv${a===id?' on':''}" onclick="setTab('${id}')">${l}</button>`
+  ).join('')}
+</div>`;
+
+const appHeader = () => {
+  const initial = S.user?.email?.[0]?.toUpperCase() || '?';
+  const name = S.user?.user_metadata?.full_name || S.user?.email?.split('@')[0] || 'You';
+  return `<div class="app-hdr">
+    <div class="app-hdr-logo">Bloom</div>
+    <div class="app-hdr-user" onclick="setTab('profile')">
+      <span class="app-hdr-name">${name.split(' ')[0]}</span>
+      <div class="app-hdr-avatar">${initial}</div>
+    </div>
+  </div>`;
+};
+
+const pbar = t => {
+  const pct = totPct();
+  return `<div class="pbar"><div class="pbar-row"><div class="pbar-title">${t}</div><div style="text-align:right"><div class="pbar-pct">${pct}%</div><div class="pbar-sub">${dnCount()} of ${allIds().length} tasks</div></div></div><div class="pbar-track"><div class="pbar-fill" style="width:${pct}%"></div></div></div>`;
+};
+
+const streakBand = () => {
+  if (!S.streak || S.streak < 2) return '';
+  const msgs = ['','','2 days going 🌿','3 day streak 🌱','4 days — you\'re blooming 🌸','5 days — spring warrior 🏆'];
+  const msg = msgs[Math.min(S.streak, msgs.length-1)] || `${S.streak} day streak 🌸`;
+  return `<div class="streak-band"><span class="flame">🔥</span><div><div style="font-size:13px;font-weight:500;color:#7a4a06">${msg}</div><div style="font-size:11px;color:#9a6820;margin-top:1px">Keep going</div></div><span class="streak-badge">Day ${S.streak}</span></div>`;
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SCREENS
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── LOADING ───────────────────────────────────────────────────────────────────
+const showLoading = () => {
+  render(`<div class="loading-scr">
+    <div class="loading-logo">Bloom</div>
+    <div class="loading-dots">
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+      <div class="loading-dot"></div>
+    </div>
+  </div>`);
+};
+
+// ── LANDING PAGE ──────────────────────────────────────────────────────────────
+const showLanding = () => {
+  S.screen = 'landing'; save();
+  render(`<div class="page">
+<div class="landing-hero">
+  <div class="lh-bg"></div>
+  <div class="lh-grad"></div>
+  <div class="lh-content">
+    <div class="lh-logo">Bloom</div>
+    <div class="lh-title">Make your home<br>feel like <em>spring</em><br>arrived on purpose.</div>
+    <div class="lh-sub">A 7-day spring reset ritual with candle pairings, flower guides and the calm your home deserves. Built for busy women in NJ and NY.</div>
+    <div class="lh-cta">
+      <button class="btn btn-p" onclick="showAuth('signup')">Start my spring reset — free →</button>
+      <button class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)" onclick="showAuth('login')">I already have an account</button>
+    </div>
+    <div class="lh-trust">
+      <span class="lh-trust-item">✓ Free to start</span>
+      <span class="lh-trust-item">✓ Progress saved</span>
+      <span class="lh-trust-item">✓ No spam ever</span>
+    </div>
+  </div>
+</div>
+</div>`);
+};
+
+// ── AUTH ──────────────────────────────────────────────────────────────────────
+let authMode = 'signup';
+const showAuth = (mode = 'signup') => {
+  authMode = mode;
+  S.screen = 'auth'; save();
+  render(`<div class="page">
+<div style="background:var(--sage);padding:1.375rem 1.5rem;display:flex;align-items:center;gap:10px">
+  <button class="btn-gh" style="color:rgba(255,255,255,.5);font-size:22px;padding:0;line-height:1" onclick="showLanding()">←</button>
+  <div class="app-hdr-logo" style="font-size:20px">Bloom</div>
+</div>
+<div class="auth-card">
+  <div class="auth-title">${mode==='signup'?'Create your account':'Welcome back'}</div>
+  <div class="auth-sub">${mode==='signup'?'Your progress syncs across all your devices.':'Sign in to continue your reset.'}</div>
+  <div class="auth-tabs">
+    <button class="auth-tab${mode==='signup'?' on':''}" onclick="showAuth('signup')">Create account</button>
+    <button class="auth-tab${mode==='login'?' on':''}" onclick="showAuth('login')">Sign in</button>
+  </div>
+  ${mode==='signup'?`<div class="auth-input-wrap"><label class="auth-label">Full name</label><input class="auth-input" type="text" id="authName" placeholder="Sarah Chen" autocomplete="name" /></div>`:''}
+  <div class="auth-input-wrap"><label class="auth-label">Email address</label><input class="auth-input" type="email" id="authEmail" placeholder="you@email.com" autocomplete="email" /></div>
+  <div class="auth-input-wrap"><label class="auth-label">Password</label><input class="auth-input" type="password" id="authPass" placeholder="At least 6 characters" autocomplete="${mode==='signup'?'new-password':'current-password'}" /></div>
+  <div id="authError" class="auth-error" style="display:none"></div>
+  <button class="btn btn-p" id="authSubmit" onclick="submitAuth()" style="margin-top:.5rem">${mode==='signup'?'Create my account →':'Sign in →'}</button>
+  
+  <div class="auth-terms">By continuing you agree to our Terms of Service.<br>We never sell your data or spam your inbox.</div>
+</div>
+</div>`);
+};
+
+const showAuthError = msg => {
+  const el = $('authError');
+  if (el) { el.textContent = msg; el.style.display = 'block'; }
+};
+
+const submitAuth = async () => {
+  const email = $('authEmail')?.value?.trim();
+  const pass = $('authPass')?.value;
+  const name = $('authName')?.value?.trim();
+  const btn = $('authSubmit');
+  if (!email || !pass) { showAuthError('Please fill in all fields'); return; }
+  if (pass.length < 6) { showAuthError('Password must be at least 6 characters'); return; }
+  if (btn) { btn.innerHTML = '<div class="spinner"></div>'; btn.disabled = true; }
+
+  // If Supabase is not configured, use demo mode
+  if (false) { // Supabase configured
+    S.user = { id: 'demo_' + email, email, user_metadata: { full_name: name || email } };
+    S.unlocked = true;
+    S.screen = 'app';
+    save();
+    showLoading();
+    setTimeout(() => { updateStreak(); showChallenge(); }, 800);
+    return;
+  }
+
+  try {
+    let result;
+    if (authMode === 'signup') {
+      result = await db.auth.signUp({ email, password: pass, options: { data: { full_name: name } } });
+    } else {
+      result = await db.auth.signInWithPassword({ email, password: pass });
+    }
+    if (result.error) { showAuthError(result.error.message); if(btn){btn.innerHTML=authMode==='signup'?'Create my account →':'Sign in →';btn.disabled=false;} return; }
+    S.user = result.data.user;
+    S.unlocked = true;
+    S.screen = 'app';
+    save();
+    showLoading();
+    await loadFromCloud();
+    updateStreak();
+    showChallenge();
+  } catch(e) {
+    showAuthError('Something went wrong. Please try again.');
+    if(btn){btn.innerHTML=authMode==='signup'?'Create my account →':'Sign in →';btn.disabled=false;}
+  }
+};
+
+const signInWithGoogle = async () => {
+  if (false) { // Supabase configured
+    showToast('Configure Supabase to enable Google sign-in');
+    return;
+  }
+  await db.auth.signInWithOAuth({ provider:'google', options:{ redirectTo: window.location.origin } });
+};
+
+// ── 7-DAY CHALLENGE ───────────────────────────────────────────────────────────
+const showChallenge = () => {
+  S.tab = 'challenge'; S.activeRoom = null; save();
+  updateStreak();
+  const today = getChallengeDay();
+  const prog = challengeProgress();
+  if (!S.challengeStarted) { showChallengeIntro(); return; }
+
+  const dayDots = CHALLENGE_DAYS.map((d,i) => {
+    const dn = challengeDayDone(i+1);
+    const isToday = (i+1) === today;
+    const locked = (i+1) > today;
+    return `<div class="day-dot${dn?' done':''}${isToday?' today':''}${locked?' locked':''}" onclick="${!locked?`showChallengeDay(${i+1})`:''}">
+      <span class="dd-n">${d.emoji}</span>
+      <span class="dd-l">Day ${i+1}</span>
+      ${dn?'<span class="dd-check">✓</span>':''}
+    </div>`;
+  }).join('');
+
+  const currentDay = CHALLENGE_DAYS[today-1];
+  const dayTasksDone = currentDay.tasks.filter(t => S.challengeTasks[t.id]).length;
+  const allComplete = CHALLENGE_DAYS.every((_,i) => challengeDayDone(i+1));
+
+  render(`<div class="page">
+${appHeader()}${nav('challenge')}
+${S.streak>=2?streakBand():''}
+<div class="challenge-hero">
+  <div class="ch-tag">7-Day Spring Challenge</div>
+  <div class="ch-title">Spring <em>Bloom</em><br>Challenge 2026</div>
+  <div class="ch-sub">One focused task each day. Seven days to a completely transformed home.</div>
+  <div class="ch-stats">
+    <div class="ch-stat"><span class="ch-stat-n">${prog.done}</span><div class="ch-stat-l">tasks done</div></div>
+    <div class="ch-stat"><span class="ch-stat-n">${prog.pct}%</span><div class="ch-stat-l">complete</div></div>
+    <div class="ch-stat"><span class="ch-stat-n">Day ${today}</span><div class="ch-stat-l">of 7</div></div>
+  </div>
+</div>
+<div class="day-grid">${dayDots}</div>
+${allComplete ? `<div class="challenge-complete">
+  <span class="cc-emoji">🌸</span>
+  <div class="cc-title">Challenge complete.</div>
+  <div class="cc-sub">Your home has bloomed. You showed up every day. That's everything.</div>
+</div>` : `<div class="day-card">
+  <div class="dc-header">
+    <div class="dc-day">Day ${today} of 7</div>
+    <div class="dc-title">${currentDay.emoji} ${currentDay.title}</div>
+    <div class="dc-sub">${currentDay.sub}</div>
+  </div>
+  <div class="dc-tasks">
+    ${currentDay.tasks.map(t => {
+      const dn = !!S.challengeTasks[t.id];
+      return `<div class="dc-tr${dn?' done':''}" onclick="toggleChallenge('${t.id}')">
+        <div class="dc-chk${dn?' on':''}">${dn?csv():''}</div>
+        <div style="flex:1"><div class="dc-t">${t.t}</div><div class="dc-m">${t.m} min</div></div>
+      </div>`;
+    }).join('')}
+    <div style="margin-top:.875rem;padding:.75rem;background:var(--sagep);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:12px;color:var(--sage)">${dayTasksDone}/${currentDay.tasks.length} tasks today</span>
+      ${dayTasksDone===currentDay.tasks.length?`<span style="font-size:12px;font-weight:500;color:var(--sage)">✓ Day ${today} complete!</span>`:`<span style="font-size:12px;color:var(--sage2)">${currentDay.tasks.length-dayTasksDone} left</span>`}
+    </div>
+  </div>
+</div>`}
+<div style="padding:0 1.375rem .875rem">
+  <button class="btn btn-o" onclick="setTab('rooms')">See all rooms →</button>
+</div>
+<div class="gap2"></div>
+</div>`);
+};
+
+const showChallengeIntro = () => {
+  render(`<div class="page">
+${appHeader()}${nav('challenge')}
+<div class="challenge-hero">
+  <div class="ch-tag">7-Day Spring Challenge</div>
+  <div class="ch-title"><em>Bloom</em> in<br>7 days.</div>
+  <div class="ch-sub">One room, one ritual, one day at a time. Every morning we unlock your next task. Seven days to a completely transformed home.</div>
+</div>
+<div style="padding:1.375rem">
+  ${CHALLENGE_DAYS.map((d,i) => `<div style="display:flex;gap:12px;padding:.875rem 0;border-bottom:1px solid var(--border);align-items:flex-start">
+    <div style="width:36px;height:36px;border-radius:50%;background:var(--sagep);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">${d.emoji}</div>
+    <div><div style="font-family:'Cormorant',serif;font-size:16px;font-weight:400;color:var(--ink)">Day ${i+1} · ${d.title}</div><div style="font-size:12px;color:var(--mid);margin-top:2px;font-weight:300">${d.sub}</div></div>
+  </div>`).join('')}
+</div>
+<div class="px pb">
+  <button class="btn btn-p" onclick="startChallenge()">Begin my 7-day challenge →</button>
+  <p style="text-align:center;margin-top:.875rem;font-size:11px;color:var(--soft)">Starts today · One task unlocks each morning</p>
+</div>
+</div>`);
+};
+
+const startChallenge = () => {
+  S.challengeStarted = true;
+  S.challengeStartDate = new Date().toISOString();
+  save(); springPetals(); showChallenge();
+};
+
+const showChallengeDay = (day) => {
+  const d = CHALLENGE_DAYS[day-1];
+  const done = d.tasks.filter(t => S.challengeTasks[t.id]).length;
+  render(`<div class="page">
+<div style="background:var(--sage);padding:1.375rem 1.5rem">
+  <button class="btn-gh" style="color:rgba(255,255,255,.5)" onclick="showChallenge()">← Challenge</button>
+  <div style="font-family:'Cormorant',serif;font-size:26px;font-weight:300;color:#fff;margin-top:.5rem">${d.emoji} ${d.title}</div>
+  <div style="font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;font-weight:300">Day ${day} of 7 · ${done}/${d.tasks.length} done</div>
+</div>
+<div style="padding:1.125rem 1.375rem 2.5rem">
+  <div style="font-family:'Cormorant',serif;font-size:15px;font-style:italic;color:var(--mid);line-height:1.8;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border)">"${d.sub}"</div>
+  ${d.tasks.map(t=>{const dn=!!S.challengeTasks[t.id];return`<div class="dc-tr${dn?' done':''}" onclick="toggleChallenge('${t.id}')"><div class="dc-chk${dn?' on':''}">${dn?csv():''}</div><div style="flex:1"><div class="dc-t">${t.t}</div><div class="dc-m">⏱ ${t.m} min</div></div></div>`}).join('')}
+</div>
+</div>`);
+};
+
+const toggleChallenge = (id) => {
+  S.challengeTasks[id] = !S.challengeTasks[id];
+  updateStreak(); save();
+  // Check if day is now complete
+  const day = CHALLENGE_DAYS.find(d => d.tasks.some(t => t.id===id));
+  if (day && day.tasks.every(t => S.challengeTasks[t.id])) {
+    springPetals(); breezeAnim();
+    showToast(`🌸 Day ${day.day} complete! You're blooming.`);
+  }
+  if ($('screen')?.innerHTML.includes('showChallengeDay')) showChallengeDay(getChallengeDay());
+  else showChallenge();
+};
+
+// ── ROOMS ─────────────────────────────────────────────────────────────────────
+const showRooms = () => {
+  S.tab = 'rooms'; S.activeRoom = null; save(); updateStreak();
+  const affirm = AFFIRMS[dnCount() % AFFIRMS.length];
+  const zones = [
+    {n:1,label:'Zone 1 · Surface',rooms:['kitchen','living','entryway']},
+    {n:2,label:'Zone 2 · Deeper',rooms:['bedroom','bathroom','office','kids','dining']},
+    {n:3,label:'Zone 3 · Systems',rooms:['guest','systems']},
+  ];
+  const zonePills = zones.map(z => `<div class="zone-pill${S.activeZone===z.n?' active':''}" onclick="S.activeZone=${z.n};save();showRooms()"><span class="zp-name">${z.label}</span></div>`).join('');
+  const cards = ROOMS.map(r => {
+    const done=rDone(r),tot=r.tasks.length,pct=rPct(r),allDone=done===tot;
+    return `<div class="rc" onclick="showRoom('${r.id}')">
+      <div class="rc-img" style="background-image:url('${PH[r.id]||PH.cover}')">
+        <div class="rc-img-ov">
+          <span class="rc-tag">${r.tag}</span>
+          <span class="rc-time">⏱ ${r.tasks.reduce((a,t)=>a+t.m,0)}min</span>
+        </div>
+      </div>
+      <div class="rc-body">
+        <div class="rc-ey">${r.label}</div>
+        <div class="rc-title">${r.title}</div>
+        <div class="rc-desc">${r.desc}</div>
+        <div class="rc-chips">
+          <span class="chip">🕯️ ${r.candle.split(' or ')[0].split(',')[0]}</span>
+          <span class="chip">💐 ${r.flower.split('·')[0].trim().split('—')[0].trim()}</span>
+        </div>
+        <div class="rc-foot">
+          <div class="rc-bar"><div class="rc-bfill" style="width:${pct}%;background:${pct===100?'var(--sage)':'var(--gold)'}"></div></div>
+          <span class="rc-cnt">${done}/${tot}</span>
+          <button class="rc-btn${allDone?' done':''}" onclick="event.stopPropagation();showRoom('${r.id}')">${allDone?'✓ Done':'Open →'}</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  render(`<div class="page">
+${appHeader()}
+${pbar('Bloom · 2026')}
+${nav('rooms')}
+${S.streak>=2?streakBand():''}
+<div class="zone-band"><div class="t-label" style="margin-bottom:.4rem">Focus zones</div><div class="zone-row">${zonePills}</div></div>
+<div class="affirm"><div class="affirm-t">"${affirm}"</div></div>
+<div class="rooms-feed">${cards}</div>
+${!S.unlocked?`<div class="lock-n" onclick="showToast('All rooms unlocked for you!')"><div><div class="ln-t">Unlock all 10 rooms free</div><div class="ln-s">Enter your email — instant access</div></div><span class="ln-cta">Get access →</span></div>`:''}
+<div class="gap2"></div>
+</div>`);
+};
+
+// ── ROOM DETAIL ───────────────────────────────────────────────────────────────
+const showRoom = id => {
+  S.activeRoom = id; save();
+  const r = ROOMS.find(x => x.id===id);
+  const done=rDone(r),tot=r.tasks.length;
+  const rows = r.tasks.map(t => {
+    const dn=!!S.tasks[t.id],lkd=!S.unlocked&&!t.free;
+    return `<div class="tr${dn?' done':''}${lkd?' lk':''}" onclick="${lkd?'showToast(\'Unlock to access all tasks\')':'toggleTask(\''+t.id+'\')'}">${lkd?lksv():`<div class="chk${dn?' on':''}">${csv()}</div>`}<div class="td"><span class="tn">${t.t}</span><span class="tb ${t.b}">${bl(t.b)}</span><div class="tmeta">${fmtTime(t.m)}${lkd?' · <span style="color:var(--gold);font-weight:500">unlock</span>':''}</div></div></div>`;
+  }).join('');
+  render(`<div class="page">
+<div class="rd-hero" style="background-image:url('${PH[r.id]||PH.cover}')">
+  <div class="rd-ov"></div>
+  <div class="rd-hc"><div class="rd-ey">${r.label}</div><div class="rd-h">${r.title.split(' ').slice(0,4).join(' ')}<br><em>${r.title.split(' ').slice(4).join(' ')}</em></div></div>
+</div>
+<div class="rd-topbar"><button class="btn-gh" onclick="showRooms()">← rooms</button><span style="font-size:12px;color:var(--soft)">${done}/${tot} done</span></div>
+<div class="rd-body">
+  <div class="rd-quote">${r.desc}</div>
+  <div class="v3">
+    <div class="v3c"><span class="v3i">🕯️</span><span class="v3l">Candle</span><span class="v3v">${r.candle.split(' or ')[0].split(',')[0]}</span></div>
+    <div class="v3c"><span class="v3i">💐</span><span class="v3l">Flower</span><span class="v3v">${r.flower.split('·')[0].trim().split(' ').slice(0,4).join(' ')}</span></div>
+    <div class="v3c"><span class="v3i">✨</span><span class="v3l">One swap</span><span class="v3v">${r.swap.split(' ').slice(0,4).join(' ')}…</span></div>
+  </div>
+  <div class="tasks-hd"><div style="font-family:'Cormorant',serif;font-size:19px;font-weight:400">Tasks</div><span class="tasks-pill">${done}/${tot}</span></div>
+  ${rows}
+</div>
+<div style="padding:.875rem 1.375rem 2.5rem">
+  <button class="btn btn-o" onclick="S.activeRoom='${r.id}';setTab('timer')">⏱ Start focus timer for this room</button>
+</div>
+</div>`);
+};
+
+const toggleTask = id => {
+  const task = ROOMS.flatMap(r=>r.tasks).find(t=>t.id===id);
+  if (!task) return;
+  if (!S.unlocked && !task.free) { showToast('All rooms unlocked for you!'); return; }
+  const was = !!S.tasks[id]; S.tasks[id] = !was;
+  updateStreak(); save();
+  if (!was) {
+    const room = ROOMS.find(r=>r.tasks.some(t=>t.id===id));
+    if (room && rDone(room)===room.tasks.length) { springPetals(); breezeAnim(); showToast(`🌸 ${room.label} complete!`); }
+  }
+  if (S.activeRoom) showRoom(S.activeRoom); else showRooms();
+};
+
+// ── TIMER ─────────────────────────────────────────────────────────────────────
+const showTimer = () => { S.tab='timer'; save(); if(TI)clearInterval(TI); renderTimer(); };
+const renderTimer = () => {
+  const l=S.tLeft,m=Math.floor(l/60),secs=l%60;
+  const disp=`${String(m).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+  const pct=Math.round((1-l/S.tBase)*100);
+  const r=S.activeRoom?ROOMS.find(x=>x.id===S.activeRoom):null;
+  const ft=r?r.tasks.filter(t=>S.unlocked||t.free).slice(0,3):CHALLENGE_DAYS[getChallengeDay()-1]?.tasks.slice(0,3)||[];
+  render(`<div class="page">
+${appHeader()}${nav('timer')}
+<div style="height:.875rem"></div>
+<div class="timer-mode-bar">
+  <button class="tm-btn${S.tMode===15?' on':''}" onclick="setT(15)">⚡ 15 min</button>
+  <button class="tm-btn${S.tMode===30?' on':''}" onclick="setT(30)">🌿 30 min</button>
+  <button class="tm-btn${S.tMode===60?' on':''}" onclick="setT(60)">💪 1 hour</button>
+  <button class="tm-btn${S.tMode===300?' on':''}" onclick="setT(300)" style="${S.tMode===300?'':'border-color:var(--gold);color:var(--gold)'}">🌸 Weekend (5h)</button>
+</div>
+<div class="timer-box">
+  <div class="t-lbl">${r?r.label+' · focus time':'Bloom timer'}</div>
+  <div class="t-dig">${disp}</div>
+  <div class="t-track"><div class="t-fill" style="width:${pct}%"></div></div>
+  <div class="t-btns">
+    <button class="tbtn2 tb2-r" onclick="resetT()">Reset</button>
+    <button class="tbtn2 tb2-s" onclick="togT()">${S.tOn?'Pause ⏸':'Start ▶'}</button>
+  </div>
+</div>
+<div class="custom-timer-box">
+  <div style="font-family:'Cormorant',serif;font-size:17px;font-weight:400;margin-bottom:.25rem">Custom timer</div>
+  <div style="font-size:12px;color:var(--mid);font-weight:300">Set any duration you want</div>
+  <div class="ct-row">
+    <input class="ct-in" type="number" id="ctMin" placeholder="45" min="1" max="480" value="${S.tMode}" />
+    <span style="font-size:13px;color:var(--mid)">minutes</span>
+    <button class="ct-set" onclick="setCustomTimer()">Set</button>
+  </div>
+</div>
+<div style="font-family:'Cormorant',serif;font-size:14px;font-style:italic;color:var(--mid);text-align:center;padding:.75rem 2rem .875rem;line-height:1.8">"Put on something you love. Light a candle. Set the timer. Stop when it rings."</div>
+<div style="margin:0 1.375rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.125rem">
+  <div style="font-family:'Cormorant',serif;font-size:17px;font-weight:400;margin-bottom:.75rem">${r?r.label+' tasks':'Today\'s challenge tasks'}</div>
+  ${ft.map(t=>{
+    const dn=r?!!S.tasks[t.id]:!!S.challengeTasks[t.id];
+    const fn=r?`toggleTask('${t.id}')`:`toggleChallenge('${t.id}')`;
+    return`<div class="tr${dn?' done':''}" onclick="${fn}"><div class="chk${dn?' on':''}">${csv()}</div><div class="td"><span class="tn">${t.t}</span><div class="tmeta">${fmtTime(t.m)}</div></div></div>`;
+  }).join('')}
+</div>
+<div class="gap2"></div>
+</div>`);
+};
+
+const setT=m=>{if(TI)clearInterval(TI);S.tOn=false;S.tMode=m;S.tLeft=m*60;S.tBase=m*60;save();renderTimer()};
+const resetT=()=>{if(TI)clearInterval(TI);S.tOn=false;S.tLeft=S.tBase;save();renderTimer()};
+const setCustomTimer=()=>{const el=$('ctMin');if(!el)return;const m=parseInt(el.value)||15;if(m<1||m>480)return;setT(m)};
+const togT=()=>{
+  if(S.tOn){clearInterval(TI);S.tOn=false;save();renderTimer();return}
+  S.tOn=true;save();renderTimer();
+  TI=setInterval(()=>{
+    if(S.tLeft<=0){clearInterval(TI);S.tOn=false;S.tLeft=0;save();springPetals();breezeAnim();
+      render(`<div class="page"><div class="done-scr"><div style="font-size:52px;margin-bottom:1.25rem">🌿</div><div style="font-family:'Cormorant',serif;font-size:26px;font-weight:400;margin-bottom:.5rem">Session complete.</div><p style="font-size:13px;color:var(--mid);max-width:240px;margin:0 auto 2rem;line-height:1.8;font-weight:300">You showed up for your home today.</p><button class="btn btn-p" style="max-width:220px;margin:0 auto" onclick="setTab('challenge')">See my progress →</button></div></div>`);return;
+    }
+    S.tLeft--;save();renderTimer();
+  },1000);
+};
+
+// ── PROFILE ───────────────────────────────────────────────────────────────────
+const showProfile = () => {
+  S.tab = 'profile'; save();
+  const name = S.user?.user_metadata?.full_name || S.user?.email?.split('@')[0] || 'You';
+  const initial = name[0]?.toUpperCase() || '?';
+  const prog = challengeProgress();
+  render(`<div class="page">
+${appHeader()}${nav('profile')}
+<div class="profile-card">
+  <div class="pc-header">
+    <div class="pc-avatar">${initial}</div>
+    <div><div class="pc-name">${name}</div><div class="pc-email">${S.user?.email||'demo@bloom.app'}</div></div>
+  </div>
+  <div class="pc-body">
+    <div class="pc-row"><span class="pc-lbl">Challenge progress</span><span class="pc-val">${prog.done}/${prog.total} tasks · ${prog.pct}%</span></div>
+    <div class="pc-row"><span class="pc-lbl">Rooms reset</span><span class="pc-val">${ROOMS.filter(r=>rPct(r)===100).length} of ${ROOMS.length}</span></div>
+    <div class="pc-row"><span class="pc-lbl">Current streak</span><span class="pc-val">${S.streak||0} day${S.streak!==1?'s':''} 🔥</span></div>
+    <div class="pc-row"><span class="pc-lbl">Progress saved</span><span class="pc-val">${db&&S.user?.id&&!S.user.id.startsWith('demo_')?'☁️ Cloud sync':'💾 Local'}</span></div>
+    <button class="pc-signout" onclick="signOut()">Sign out</button>
+  </div>
+</div>
+<div style="padding:.875rem 1.375rem 2.5rem">
+  <div style="background:var(--sagep);border:1px solid var(--sage3);border-radius:var(--rl);padding:1.125rem;margin-bottom:.875rem">
+    <div style="font-family:'Cormorant',serif;font-size:17px;font-weight:400;color:var(--sage);margin-bottom:.35rem">Printable guide</div>
+    <div style="font-size:12px;color:var(--sage2);line-height:1.7;font-weight:300">A beautiful 28-page printable PDF is coming soon — candle pairings, flower guide, room mood boards. Free for all members.</div>
+    <div style="display:inline-flex;align-items:center;gap:4px;background:var(--goldp);border:1px solid var(--goldb);color:#7a4a06;font-size:10px;font-weight:500;padding:3px 9px;border-radius:99px;margin-top:.625rem">⏳ Coming soon</div>
+  </div>
+</div>
+</div>`);
+};
+
+const signOut = async () => {
+  if (db && !S.user?.id?.startsWith('demo_')) await db.auth.signOut();
+  S.user = null; S.screen = 'landing';
+  save(); showLanding();
+};
+
+// ══════════════════════════════════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════════════════════════════════
+const init = async () => {
+  showLoading();
+
+  // Check for existing Supabase session
+  if (db && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+    try {
+      const { data: { session } } = await db.auth.getSession();
+      if (session?.user) {
+        S.user = session.user;
+        S.unlocked = true;
+        S.screen = 'app';
+        await loadFromCloud();
+        updateStreak();
+        setTab(S.tab || 'challenge');
+        return;
+      }
+    } catch(e) {}
+  }
+
+  // Check local session (demo mode)
+  if (S.user && S.screen === 'app') {
+    setTab(S.tab || 'challenge');
+    return;
+  }
+
+  showLanding();
+};
+
+init();
+</script>
+
+<script>
+// ── SERVICE WORKER (offline support) ─────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'bloom-v1';
+    const ASSETS = ['/'];
+    self.addEventListener('install', e => {
+      e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
+      self.skipWaiting();
+    });
+    self.addEventListener('activate', e => {
+      e.waitUntil(caches.keys().then(keys =>
+        Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+      ));
+      self.clients.claim();
+    });
+    self.addEventListener('fetch', e => {
+      e.respondWith(
+        fetch(e.request).catch(() => caches.match(e.request))
+      );
+    });
+  `;
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+
+// ── INSTALL PROMPT ────────────────────────────────────────────────────────────
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  // Show install banner after 3 seconds
+  setTimeout(showInstallBanner, 3000);
+});
+
+function showInstallBanner() {
+  if (!deferredPrompt) return;
+  if (localStorage.getItem('bloom_install_dismissed')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'install-banner';
+  banner.style.cssText = `
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 100%; max-width: 430px; background: #2d5a3f; color: #fff;
+    padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+    z-index: 99999; box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+    font-family: 'Outfit', sans-serif; animation: slideUp .3s ease;
+  `;
+  banner.innerHTML = `
+    <style>@keyframes slideUp{from{transform:translateX(-50%) translateY(100%)}to{transform:translateX(-50%) translateY(0)}}</style>
+    <span style="font-size:28px;flex-shrink:0">🌸</span>
+    <div style="flex:1">
+      <div style="font-size:13px;font-weight:500">Add Bloom to your home screen</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:2px">Works like a real app — no App Store needed</div>
+    </div>
+    <button onclick="installApp()" style="padding:8px 16px;background:#b8862a;color:#fff;border:none;border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap">Install</button>
+    <button onclick="dismissInstall()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;padding:0 4px;line-height:1">×</button>
+  `;
+  document.body.appendChild(banner);
+}
+
+function installApp() {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(result => {
+    if (result.outcome === 'accepted') {
+      const banner = document.getElementById('install-banner');
+      if (banner) banner.remove();
+    }
+    deferredPrompt = null;
+  });
+}
+
+function dismissInstall() {
+  const banner = document.getElementById('install-banner');
+  if (banner) banner.remove();
+  localStorage.setItem('bloom_install_dismissed', '1');
+}
+
+// ── iOS INSTALL INSTRUCTIONS ──────────────────────────────────────────────────
+// iOS doesn't support beforeinstallprompt — show manual instructions
+const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+const isInStandaloneMode = window.navigator.standalone === true;
+
+if (isIOS && !isInStandaloneMode && !localStorage.getItem('bloom_ios_dismissed')) {
+  setTimeout(() => {
+    const banner = document.createElement('div');
+    banner.style.cssText = `
+      position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 100%; max-width: 430px; background: #2d5a3f; color: #fff;
+      padding: 16px 20px; z-index: 99999;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+      font-family: 'Outfit', sans-serif; animation: slideUp .3s ease;
+      border-radius: 16px 16px 0 0;
+    `;
+    banner.innerHTML = `
+      <style>@keyframes slideUp{from{transform:translateX(-50%) translateY(100%)}to{transform:translateX(-50%) translateY(0)}}</style>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:22px">🌸</span>
+          <div style="font-size:13px;font-weight:500">Add Bloom to your iPhone</div>
+        </div>
+        <button onclick="this.closest('div[style]').remove();localStorage.setItem('bloom_ios_dismissed','1')" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;padding:0">×</button>
+      </div>
+      <div style="background:rgba(255,255,255,.1);border-radius:10px;padding:10px 12px;font-size:12px;color:rgba(255,255,255,.85);line-height:1.8">
+        1. Tap the <strong>Share button</strong> at the bottom of Safari (the box with an arrow)<br>
+        2. Scroll down and tap <strong>"Add to Home Screen"</strong><br>
+        3. Tap <strong>"Add"</strong> — Bloom appears on your home screen like a real app
+      </div>
+    `;
+    document.body.appendChild(banner);
+  }, 4000);
+}
+</script>
+</body>
+</html>
