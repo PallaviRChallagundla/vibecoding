@@ -33,3 +33,6 @@ warrior mode, and every user's progress saves to the cloud.
 - Shopping checklists with candle and flower pairings, and items linked
 - User authentication with email sign-up and confirmation
 - Cloud database sync — progress saves across all dev
+
+
+![Bloom App Preview](preview.webp)
