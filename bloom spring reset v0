@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Bloom — Spring Home Reset 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --f:'DM Sans',sans-serif;
+  --fs:'Playfair Display',serif;
+  --cream:#faf8f3;
+  --white:#ffffff;
+  --petal:#f2e8e1;
+  --blush:#e8d5cc;
+  --sage:#3a6648;
+  --sage2:#4e8860;
+  --sage3:#8dbfa0;
+  --sagep:#ecf4ee;
+  --gold:#b8892e;
+  --goldp:#fbf3e3;
+  --goldb:#e5d09a;
+  --rose:#b5665e;
+  --rosep:#fbedeb;
+  --ink:#1a1917;
+  --mid:#585650;
+  --muted:#8a877e;
+  --border:#e6ded5;
+  --r:12px;--rl:18px;--rxl:26px;
+}
+html,body{background:var(--cream);font-family:var(--f);color:var(--ink);font-size:15px;min-height:100vh}
+#app{max-width:430px;margin:0 auto;background:var(--white);min-height:100vh;position:relative}
+#screen{animation:up .3s ease both}
+@keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* TYPE */
+.serif{font-family:var(--fs)}
+.t-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:400;color:var(--muted)}
+.t-hero{font-family:var(--fs);font-size:40px;font-weight:400;line-height:1.1;color:var(--ink)}
+.t-hero em{font-style:italic;color:var(--sage)}
+.t-section{font-family:var(--fs);font-size:22px;font-weight:400;line-height:1.25}
+.t-card{font-family:var(--fs);font-size:17px;font-weight:400;line-height:1.3}
+.t-body{font-size:13px;color:var(--mid);line-height:1.75;font-weight:300}
+.t-micro{font-size:11px;color:var(--muted);font-weight:300}
+
+/* LAYOUT */
+.px{padding:0 1.375rem}.pt{padding-top:1.5rem}.pb{padding-bottom:2rem}
+.gap{height:.875rem}.gap2{height:1.75rem}
+.rule{height:1px;background:var(--border);margin:.75rem 1.375rem}
+
+/* BUTTONS */
+.btn{display:block;width:100%;padding:14px;border-radius:var(--r);font-family:var(--f);font-size:14px;font-weight:500;cursor:pointer;text-align:center;border:none;transition:all .18s}
+.btn-s{background:var(--sage);color:#fff}.btn-s:hover{background:var(--sage2)}.btn-s:active{transform:scale(.98)}
+.btn-g{background:var(--gold);color:#fff}.btn-g:active{transform:scale(.98)}
+.btn-o{background:transparent;border:1.5px solid var(--sage);color:var(--sage);margin-top:8px}.btn-o:hover{background:var(--sagep)}
+.btn-ghost{background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;font-family:var(--f);padding:5px 0}
+
+/* TOP NAV */
+.topnav{background:var(--white);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:30}
+.topnav::-webkit-scrollbar{display:none}
+.tn{flex:1;min-width:50px;padding:12px 4px 11px;font-size:11px;font-weight:500;letter-spacing:.3px;cursor:pointer;border-bottom:2.5px solid transparent;color:var(--muted);background:none;border-top:none;border-left:none;border-right:none;font-family:var(--f);text-align:center;white-space:nowrap;transition:all .18s}
+.tn.on{color:var(--sage);border-bottom-color:var(--sage)}
+
+/* PROGRESS STRIP */
+.pbar{background:var(--sage);padding:1.125rem 1.375rem 1.375rem}
+.pbar-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.5rem}
+.pbar-title{font-family:var(--fs);font-size:18px;color:#fff;font-weight:400;font-style:italic}
+.pbar-n{font-size:26px;font-weight:500;color:#fff;line-height:1}
+.pbar-s{font-size:11px;color:rgba(255,255,255,.38);margin-top:1px}
+.pbar-track{background:rgba(255,255,255,.18);border-radius:99px;height:4px;overflow:hidden}
+.pbar-fill{height:100%;background:var(--gold);border-radius:99px;transition:width .7s cubic-bezier(.4,0,.2,1)}
+
+/* WELCOME HERO */
+.w-cover{background:var(--sage);min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;padding:2.25rem 1.5rem 2rem;position:relative;overflow:hidden}
+.w-cover::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,80,55,.2) 0%,rgba(40,80,55,.85) 100%)}
+.w-cover-img{position:absolute;inset:0;font-size:200px;display:flex;align-items:center;justify-content:center;opacity:.08;filter:blur(2px);pointer-events:none;user-select:none}
+.w-cover-content{position:relative}
+.w-tag{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:1rem}
+.w-title{font-family:var(--fs);font-size:42px;font-weight:400;color:#fff;line-height:1.05;margin-bottom:.6rem}
+.w-title em{font-style:italic;color:var(--sage3)}
+.w-sub{font-size:13px;color:rgba(255,255,255,.55);line-height:1.8;max-width:260px;margin-bottom:1.25rem;font-weight:300}
+.w-proof{display:flex;align-items:center;gap:7px}
+.w-stars{color:var(--gold);font-size:11px;letter-spacing:2px}
+.w-pt{font-size:11px;color:rgba(255,255,255,.38)}
+
+/* ROOM CARDS — pinterest editorial grid */
+.rooms-list{padding:1rem 1.375rem;display:flex;flex-direction:column;gap:10px}
+.rc{background:var(--white);border-radius:var(--rl);overflow:hidden;border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.rc:active{transform:scale(.99)}
+.rc-header{height:110px;display:flex;align-items:flex-end;justify-content:space-between;padding:10px 14px;position:relative;overflow:hidden}
+.rc-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:80px;opacity:.12;filter:blur(1px)}
+.rc-tag{position:relative;font-size:10px;font-weight:500;letter-spacing:.4px;padding:4px 10px;border-radius:99px;backdrop-filter:blur(6px)}
+.rc-pct{position:relative;font-size:12px;font-weight:500;opacity:.85}
+.rc-body{padding:12px 16px 14px}
+.rc-room{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:.7px;text-transform:uppercase;margin-bottom:2px}
+.rc-title{font-family:var(--fs);font-size:18px;font-weight:400;color:var(--ink);margin-bottom:5px}
+.rc-sub{font-size:12px;color:var(--mid);line-height:1.65;margin-bottom:10px;font-weight:300}
+.rc-chips{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+.chip{font-size:10px;padding:3px 9px;border-radius:99px;border:1px solid var(--border);color:var(--mid);display:flex;align-items:center;gap:3px;white-space:nowrap}
+.rc-foot{display:flex;align-items:center;gap:10px}
+.rc-prog{flex:1;height:3px;background:var(--border);border-radius:99px;overflow:hidden}
+.rc-prog-fill{height:100%;border-radius:99px;transition:width .5s}
+.rc-cnt{font-size:11px;color:var(--muted);white-space:nowrap}
+.rc-btn{font-size:12px;font-weight:500;color:var(--sage);padding:5px 11px;border:1px solid var(--sage);border-radius:99px;background:transparent;cursor:pointer;font-family:var(--f);white-space:nowrap;transition:all .18s}
+.rc-btn:hover{background:var(--sagep)}
+.rc-btn.done{background:var(--sage);color:#fff;border-color:var(--sage)}
+
+/* ROOM DETAIL */
+.rd-cover{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.rd-bg{position:absolute;font-size:100px;opacity:.12}
+.rd-inner{position:relative;text-align:center;padding:0 1.5rem}
+.rd-eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;opacity:.6;margin-bottom:.35rem}
+.rd-h{font-family:var(--fs);font-size:26px;font-weight:400;line-height:1.2}
+.rd-h em{font-style:italic}
+
+.rd-body{padding:1.125rem 1.375rem 2.5rem}
+.rd-quote{font-family:var(--fs);font-size:15px;font-style:italic;line-height:1.8;color:var(--mid);margin-bottom:1.125rem;padding-bottom:1.125rem;border-bottom:1px solid var(--border)}
+.vibes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:1.125rem}
+.vibe{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:9px 7px;text-align:center}
+.vibe-i{font-size:18px;display:block;margin-bottom:3px}
+.vibe-l{font-size:9px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:1px}
+.vibe-v{font-family:var(--fs);font-size:11px;font-style:italic;color:var(--ink);display:block;line-height:1.4}
+
+.detail-panel{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);padding:.875rem 1rem;margin-bottom:1.125rem}
+.dp-row{margin-bottom:.625rem}
+.dp-row:last-child{margin-bottom:0}
+.dp-label{font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.dp-val{font-family:var(--fs);font-size:13px;font-style:italic;color:var(--ink);line-height:1.65}
+
+.task-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.task-hd-title{font-family:var(--fs);font-size:17px;font-weight:400}
+.task-pill{font-size:11px;padding:3px 9px;border-radius:99px;background:var(--sagep);color:var(--sage);font-weight:500}
+
+/* TASKS */
+.tr{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.tr:last-child{border-bottom:none}
+.tr.lk{cursor:default;opacity:.3}
+.tr:not(.lk):active{opacity:.65}
+.chk{width:21px;height:21px;border-radius:50%;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px;background:var(--white)}
+.chk.on{background:var(--sage);border-color:var(--sage)}
+.chk svg{display:none;width:10px;height:8px;stroke:#fff;stroke-width:2.5;fill:none}
+.chk.on svg{display:block}
+.lkico{width:12px;height:12px;flex-shrink:0;opacity:.35;margin-top:3px}
+.td{flex:1}
+.tn{font-size:13px;line-height:1.5;color:var(--ink)}
+.tr.done .tn{text-decoration:line-through;color:var(--muted)}
+.tmeta{font-size:11px;color:var(--muted);margin-top:2px}
+.tbadge{font-size:10px;padding:1px 6px;border-radius:99px;font-weight:500;margin-left:4px;vertical-align:middle}
+.tbd{background:#e6efea;color:#1a4228}.tbq{background:#fdf2df;color:#7a4a06}
+.tbr{background:#e6eef9;color:#1a3a6b}.tbc{background:#fae6ea;color:#6b1a22}
+
+/* DIFFICULTY VIEW */
+.diff-chips{display:flex;gap:6px;padding:.875rem 1.375rem .5rem;overflow-x:auto;scrollbar-width:none}
+.diff-chips::-webkit-scrollbar{display:none}
+.dc{padding:7px 13px;border-radius:99px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--mid);font-family:var(--f);transition:all .18s;white-space:nowrap}
+.dc.on{color:#fff;border-color:transparent}
+.dc[data-k="all"].on{background:var(--sage)}
+.dc[data-k="tbq"].on{background:#c4973a}
+.dc[data-k="tbc"].on{background:#a85060}
+.dc[data-k="tbr"].on{background:#3070b0}
+.dc[data-k="tbd"].on{background:var(--sage)}
+
+.diff-banner{margin:.25rem 1.375rem .875rem;padding:.875rem 1rem;border-radius:var(--rl);border:1px solid}
+.diff-banner.all{background:var(--cream);border-color:var(--border);color:var(--mid)}
+.diff-banner.tbq{background:#fdf9ea;border-color:#e8d070;color:#7a4a06}
+.diff-banner.tbc{background:#fdf0f3;border-color:#e0a8b5;color:#6b1a22}
+.diff-banner.tbr{background:#eaf0fb;border-color:#a0c0e0;color:#1a3a6b}
+.diff-banner.tbd{background:var(--sagep);border-color:var(--sage3);color:#1a4228}
+.db-title{font-family:var(--fs);font-size:16px;font-weight:400;margin-bottom:3px}
+.db-desc{font-size:12px;line-height:1.7;font-weight:300}
+
+/* VISUAL CARDS — by difficulty */
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 1.375rem .875rem}
+.vc{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:12px;cursor:pointer;position:relative;overflow:hidden;transition:all .2s}
+.vc:active{transform:scale(.965)}
+.vc.done{opacity:.42}
+.vc.lk{opacity:.28;cursor:default}
+.vc-accent{position:absolute;top:0;left:0;right:0;height:3px;border-radius:0}
+.vc-chk{position:absolute;top:9px;right:9px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.vc-chk.on{background:var(--sage);border-color:var(--sage)}
+.vc-chk svg{display:none;width:9px;height:7px;stroke:#fff;stroke-width:2.5;fill:none}
+.vc-chk.on svg{display:block}
+.vc-lk{position:absolute;top:8px;right:8px;font-size:13px}
+.vc-icon{font-size:22px;display:block;margin-bottom:6px;margin-top:2px;line-height:1}
+.vc-name{font-size:12px;font-weight:500;color:var(--ink);line-height:1.45;margin-bottom:2px}
+.vc.done .vc-name{text-decoration:line-through;color:var(--muted)}
+.vc-room{font-size:10px;color:var(--muted)}
+.vc-time{font-size:10px;color:var(--muted);margin-top:3px}
+
+/* SHOP */
+.shop-header{background:var(--sage);padding:1.625rem 1.375rem 2rem}
+.shop-h{font-family:var(--fs);font-size:24px;color:#fff;font-weight:400;margin-bottom:.35rem}
+.shop-s{font-size:12px;color:rgba(255,255,255,.48);line-height:1.7;font-weight:300}
+.shop-subtotal{background:rgba(255,255,255,.1);border-radius:var(--r);padding:.625rem .875rem;margin-top:.875rem;display:flex;justify-content:space-between;align-items:center}
+
+.shop-cats{display:flex;gap:6px;padding:.875rem 1.375rem .5rem;overflow-x:auto;scrollbar-width:none}
+.shop-cats::-webkit-scrollbar{display:none}
+.sc-btn{padding:7px 13px;border-radius:99px;font-size:11px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--mid);transition:all .18s;white-space:nowrap;font-family:var(--f)}
+.sc-btn.on{background:var(--sage);border-color:var(--sage);color:#fff}
+
+.si{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;text-decoration:none;color:inherit}
+.si:last-child{border-bottom:none}
+.si:active{opacity:.75}
+.si-icon{width:42px;height:42px;border-radius:var(--r);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:20px}
+.si-g{background:#ecf4ee}.si-b{background:#e8f0f8}.si-a{background:#fbf6e0}.si-p{background:#fbeaec}.si-v{background:#f0eefb}
+.si-name{font-size:13px;font-weight:500;color:var(--ink);line-height:1.3}
+.si-brand{font-size:10px;color:var(--muted);margin:1px 0 3px}
+.si-why{font-size:11px;color:var(--mid);line-height:1.55}
+.si-added{font-size:10px;color:var(--sage);font-weight:500;margin-top:3px}
+.si-r{text-align:right;flex-shrink:0}
+.si-price{font-size:13px;font-weight:500;color:var(--ink)}
+.si-store{font-size:10px;color:var(--muted);margin-top:1px}
+.si-add{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);background:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .18s;margin-top:5px;margin-left:auto;line-height:1}
+.si-add.on{background:var(--sage);border-color:var(--sage);color:#fff;font-size:11px}
+
+/* SCENTS */
+.scent-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:13px 15px;display:flex;gap:12px;align-items:flex-start;margin-bottom:8px;text-decoration:none;color:inherit;cursor:pointer;transition:opacity .18s}
+.scent-card:active{opacity:.75}
+.sco{width:46px;height:46px;border-radius:var(--r);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:23px}
+.sc-name{font-family:var(--fs);font-size:16px;font-weight:400}
+.sc-brand{font-size:10px;color:var(--muted);margin:1px 0 4px}
+.sc-desc{font-size:12px;color:var(--mid);line-height:1.6}
+.sc-rooms{font-size:10px;font-weight:500;padding:2px 8px;border-radius:99px;margin-top:5px;display:inline-block}
+.sc-shop{font-size:11px;color:var(--sage);font-weight:500;margin-top:4px}
+
+/* FLOWERS */
+.flower-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:14px 15px;margin-bottom:8px}
+.fc-top{display:flex;gap:12px;align-items:flex-start;margin-bottom:8px}
+.fc-icon{width:46px;height:46px;border-radius:var(--r);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:23px}
+.fc-name{font-family:var(--fs);font-size:16px;font-weight:400}
+.fc-season{font-size:10px;color:var(--muted);margin:1px 0 4px}
+.fc-desc{font-size:12px;color:var(--mid);line-height:1.6;margin-bottom:3px}
+.fc-where{font-size:11px;color:var(--sage);font-weight:500}
+.fc-tip{background:var(--cream);border-radius:8px;padding:8px 10px;font-family:var(--fs);font-size:13px;font-style:italic;color:var(--mid);line-height:1.6;margin-top:8px;border:1px solid var(--border)}
+
+/* GUIDE / EMAIL GATE */
+.guide-cover{background:var(--sage);padding:2rem 1.5rem 2.25rem;text-align:center;position:relative;overflow:hidden}
+.guide-cover::before{content:'✦';font-size:120px;color:rgba(255,255,255,.04);position:absolute;top:-20px;left:-10px;font-family:serif}
+.gcover-tag{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:1rem;position:relative}
+.gcover-title{font-family:var(--fs);font-size:32px;font-weight:400;color:#fff;line-height:1.1;margin-bottom:.6rem;position:relative}
+.gcover-title em{font-style:italic;color:var(--sage3)}
+.gcover-sub{font-size:13px;color:rgba(255,255,255,.48);line-height:1.8;font-weight:300;max-width:270px;margin:0 auto;position:relative}
+
+.pdf-preview{margin:1.125rem 1.375rem .875rem;background:var(--cream);border-radius:var(--rl);border:1px solid var(--border);overflow:hidden}
+.pdf-preview-header{background:var(--sage);padding:.75rem 1.125rem}
+.pdf-title{font-family:var(--fs);font-size:17px;font-style:italic;color:#fff}
+.pdf-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:1px}
+.pdf-pages{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:.875rem}
+.pdf-page{border-radius:8px;aspect-ratio:.72;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:20px;border:1px solid var(--border);position:relative;overflow:hidden}
+.pdf-page-lbl{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.28);font-size:9px;color:#fff;text-align:center;padding:3px;font-weight:500;letter-spacing:.3px;text-transform:uppercase}
+
+.includes{padding:.875rem 1.375rem}
+.inc{display:flex;gap:9px;align-items:flex-start;padding:9px 10px;background:var(--cream);border-radius:var(--r);border:1px solid var(--border);margin-bottom:6px}
+.inc-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.inc-t{font-size:13px;font-weight:500;color:var(--ink)}
+.inc-s{font-size:11px;color:var(--mid);margin-top:1px;line-height:1.5;font-weight:300}
+
+.email-gate{margin:0 1.375rem .875rem;background:var(--petal);border:1px solid var(--blush);border-radius:var(--rl);padding:1.125rem}
+.eg-title{font-family:var(--fs);font-size:18px;font-weight:400;margin-bottom:.3rem}
+.eg-sub{font-size:12px;color:var(--mid);line-height:1.7;margin-bottom:.875rem;font-weight:300}
+.eg-row{display:flex;gap:8px}
+.eg-in{flex:1;padding:11px 12px;border:1.5px solid var(--blush);border-radius:var(--r);font-family:var(--f);font-size:13px;background:var(--white);color:var(--ink);outline:none;transition:border-color .18s}
+.eg-in:focus{border-color:var(--sage)}
+.eg-btn{padding:11px 14px;background:var(--sage);color:#fff;border:none;border-radius:var(--r);font-family:var(--f);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .18s}
+.eg-btn:hover{background:var(--sage2)}
+.eg-note{font-size:11px;color:var(--muted);margin-top:.5rem;text-align:center}
+
+.review-row{display:flex;gap:9px;padding:0 1.375rem .875rem;align-items:flex-start}
+.rev-stars{color:var(--gold);font-size:14px;flex-shrink:0;margin-top:1px}
+.rev-text{font-family:var(--fs);font-size:13px;font-style:italic;color:var(--mid);line-height:1.7}
+
+/* AFFIRM */
+.affirm{background:var(--petal);border:1px solid var(--blush);border-radius:var(--rl);padding:.875rem 1.125rem;margin:.875rem 1.375rem}
+.affirm-text{font-family:var(--fs);font-size:14px;font-style:italic;color:#5a2a1a;line-height:1.75}
+
+/* LOCK NUDGE */
+.lock-nudge{background:var(--goldp);border:1.5px solid var(--goldb);padding:.875rem 1.375rem;display:flex;align-items:center;justify-content:space-between;margin:.625rem 1.375rem;border-radius:var(--r);cursor:pointer}
+.ln-t{font-weight:500;font-size:13px;color:#5a3a08}
+.ln-s{font-size:11px;color:#8a6018;margin-top:2px}
+.ln-cta{font-size:13px;font-weight:500;color:var(--gold);white-space:nowrap}
+
+/* ONBOARDING */
+.ob-cover{background:var(--sage);padding:2rem 1.5rem 2.25rem}
+.ob-bar{display:flex;gap:5px;margin-bottom:2rem}
+.ob-seg{flex:1;height:3px;border-radius:99px;background:rgba(255,255,255,.18);transition:background .3s}
+.ob-seg.on{background:rgba(255,255,255,.7)}
+.ob-q{font-family:var(--fs);font-size:24px;font-weight:400;color:#fff;line-height:1.25;margin-bottom:.35rem}
+.ob-hint{font-size:13px;color:rgba(255,255,255,.42);font-weight:300;line-height:1.65}
+.ob-opts{padding:1.25rem 1.375rem 2.5rem;display:flex;flex-direction:column;gap:7px}
+.ob-opt{display:block;width:100%;padding:12px 15px;text-align:left;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);font-size:13px;cursor:pointer;font-family:var(--f);color:var(--ink);line-height:1.45;font-weight:300;transition:all .18s}
+.ob-opt:hover{border-color:var(--sage2);background:var(--sagep)}
+.ob-opt.on{border-color:var(--sage);background:var(--sagep);color:var(--sage);font-weight:500}
+
+/* TIMER */
+.timer-box{background:var(--sage);border-radius:var(--rl);margin:0 1.375rem 10px;padding:1.625rem 1.125rem 1.375rem;text-align:center}
+.t-lbl{font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.38);text-transform:uppercase;margin-bottom:.45rem}
+.t-dig{font-family:var(--fs);font-size:68px;font-weight:400;color:#fff;letter-spacing:4px;line-height:1}
+.t-track{background:rgba(255,255,255,.12);border-radius:99px;height:4px;margin:.875rem 0;overflow:hidden}
+.t-fill{height:100%;background:var(--gold);border-radius:99px;transition:width 1s linear}
+.t-picks{display:flex;gap:7px;justify-content:center;margin-bottom:.75rem}
+.tp{padding:6px 14px;border-radius:99px;font-size:12px;font-weight:500;cursor:pointer;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.48);font-family:var(--f);transition:all .18s}
+.tp.on{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.48);color:#fff}
+.t-btns{display:flex;gap:8px;justify-content:center}
+.tb{padding:9px 20px;border-radius:var(--r);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--f);border:none;transition:all .18s}
+.tb-s{background:var(--gold);color:#fff}.tb-r{background:rgba(255,255,255,.1);color:rgba(255,255,255,.68)}
+
+/* DONE / SPINNER */
+.done-screen{text-align:center;padding:4rem 2rem}
+.spinner-wrap{text-align:center;padding:5rem 2rem}
+.spinner{width:34px;height:34px;border:2.5px solid var(--sagep);border-top-color:var(--sage);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1.25rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="app"><div id="screen"></div></div>
+<script>
+// ── Replace with your Amazon Associates tag once approved ──
+const TAG = 'bloomhome-20';
+
+const SK = 'bloom_v4';
+const load = () => { try { const s = localStorage.getItem(SK); return s ? JSON.parse(s) : null; } catch { return null; } };
+const save = () => { try { localStorage.setItem(SK, JSON.stringify(S)); } catch {} };
+
+// ── 10 ROOMS ─────────────────────────────────────────────────────────────
+const ROOMS = [
+  { id:'kitchen', label:'Kitchen', emoji:'🍋', day:1,
+    bg:'#ecf4ee', hc:'#1a4228', tc:'rgba(26,66,40,.7)', tag:'Start here · Day 1',
+    title:'Where every morning begins',
+    desc:'A clear kitchen changes the tone of your entire day before you\'ve even had coffee. This is always the right room to start.',
+    candle:'Mrs. Meyer\'s Lemon Verbena', candleWhere:'$4.49 at Target',
+    flower:'Eucalyptus in a glass jar — $4 at Trader Joe\'s',
+    swap:'Swap dish soap for Mrs. Meyer\'s in a glass pump dispenser',
+    tasks:[
+      {id:'k1',t:'Throw out everything expired — fridge, freezer, every pantry shelf',m:'20 min',b:'tbc',e:'🗑️',free:true},
+      {id:'k2',t:'Pull the fridge out — vacuum coils, clean the floor behind it',m:'15 min',b:'tbd',e:'🧹',free:true},
+      {id:'k3',t:'Deep clean the oven: remove racks, scrub walls and door glass',m:'30 min',b:'tbd',e:'🔥',free:false},
+      {id:'k4',t:'Degrease cabinet fronts, handles and the range hood filter',m:'20 min',b:'tbd',e:'🧴',free:false},
+      {id:'k5',t:'Descale the kettle and coffee maker with white vinegar',m:'10 min',b:'tbr',e:'☕',free:false},
+      {id:'k6',t:'Steam-clean the microwave with vinegar + water (Angry Mama method)',m:'10 min',b:'tbq',e:'💨',free:false},
+      {id:'k7',t:'Reorganise the pantry by category — breakfast, snacks, cooking, baking',m:'25 min',b:'tbc',e:'📦',free:false},
+      {id:'k8',t:'Swap winter dish towels for light spring linens',m:'5 min',b:'tbr',e:'🌿',free:false},
+    ]
+  },
+  { id:'living', label:'Living room', emoji:'🕯️', day:1,
+    bg:'#fbf3e3', hc:'#5a3a08', tc:'rgba(90,58,8,.65)', tag:'Day 1',
+    title:'Where you finally exhale',
+    desc:'This room should ask nothing of you when you walk in. It should just hold you. Reset it so it can.',
+    candle:'Capri Blue Volcano', candleWhere:'$20 at Target / Anthropologie',
+    flower:'5 stems ranunculus in ceramic vase — $6.99 at Trader Joe\'s',
+    swap:'Swap chunky knit throw for linen in sage or warm white',
+    tasks:[
+      {id:'l1',t:'Deep vacuum every sofa cushion, underneath and the frame base',m:'15 min',b:'tbd',e:'🛋️',free:true},
+      {id:'l2',t:'Wipe all hard surfaces — shelves, windowsills, console tables',m:'15 min',b:'tbq',e:'✨',free:true},
+      {id:'l3',t:'Wash all throws and pillow covers on a hot cycle',m:'30 min',b:'tbr',e:'🧺',free:false},
+      {id:'l4',t:'Clean windows inside — glass, frames and the tracks below',m:'20 min',b:'tbr',e:'🪟',free:false},
+      {id:'l5',t:'Dust ceiling fan blades, light fittings and all lampshades',m:'10 min',b:'tbq',e:'💡',free:false},
+      {id:'l6',t:'Declutter every shelf and surface — donate, bin, or relocate',m:'20 min',b:'tbc',e:'📚',free:false},
+      {id:'l7',t:'Vacuum rugs — move furniture to reach underneath',m:'20 min',b:'tbd',e:'🪄',free:false},
+      {id:'l8',t:'Style one surface: candle + vase + one object you love',m:'10 min',b:'tbr',e:'🕯️',free:false},
+    ]
+  },
+  { id:'entryway', label:'Entryway', emoji:'🚪', day:1,
+    bg:'#f5ede6', hc:'#5a2818', tc:'rgba(90,40,24,.65)', tag:'Day 1 · 30 min',
+    title:'The first thing you feel coming home',
+    desc:'Your entryway is a decompression chamber. Walking in should feel like arrival, not like hitting more chaos.',
+    candle:'Yankee Clean Cotton or Nest White Tea & Ginger', candleWhere:'$12–24 at Target / Walmart',
+    flower:'One bud vase, one tulip on the console — $3 at any grocery store',
+    swap:'One small hook rail — coats stop living on dining chairs',
+    tasks:[
+      {id:'e1',t:'Remove all shoes — donate any not worn in the past year',m:'15 min',b:'tbc',e:'👟',free:true},
+      {id:'e2',t:'Wipe the front door inside, outside and the handle thoroughly',m:'10 min',b:'tbq',e:'🚪',free:true},
+      {id:'e3',t:'Clear every surface — give every stray item a real home',m:'15 min',b:'tbc',e:'🗂️',free:false},
+      {id:'e4',t:'Wash or replace the doormat',m:'10 min',b:'tbr',e:'🏠',free:false},
+      {id:'e5',t:'Hang all coats and bags in their actual designated spots',m:'10 min',b:'tbc',e:'🧥',free:false},
+      {id:'e6',t:'Place one welcoming detail — a plant, candle or bud vase',m:'5 min',b:'tbr',e:'🌿',free:false},
+    ]
+  },
+  { id:'bedroom', label:'Bedroom', emoji:'🌸', day:2,
+    bg:'#fbeaed', hc:'#6b1a2e', tc:'rgba(107,26,46,.65)', tag:'Day 2',
+    title:'Your most important room',
+    desc:'Clutter here costs you sleep quality — it\'s not aesthetic, it\'s biological. This reset is an act of care for yourself.',
+    candle:'Voluspa French Cade Lavender or Paddywax Lavender + Vanilla', candleWhere:'$14–32 at Target / Sephora',
+    flower:'Dried lavender bundle on the nightstand — $5 at HomeGoods',
+    swap:'Linen duvet cover in sage, oatmeal or soft white',
+    tasks:[
+      {id:'b1',t:'Strip all bedding and wash on the hottest appropriate setting',m:'40 min',b:'tbr',e:'🛏️',free:true},
+      {id:'b2',t:'Flip or rotate the mattress, vacuum the entire surface',m:'10 min',b:'tbd',e:'😴',free:true},
+      {id:'b3',t:'Sprinkle baking soda on the mattress — leave 2 hours, vacuum off',m:'5 active',b:'tbd',e:'✨',free:false},
+      {id:'b4',t:'Declutter your wardrobe: one pile to donate, one to keep',m:'45 min',b:'tbc',e:'👗',free:false},
+      {id:'b5',t:'Move winter layers to the back, bring spring pieces forward',m:'20 min',b:'tbr',e:'🌸',free:false},
+      {id:'b6',t:'Clear the nightstand — keep only what you use every single night',m:'10 min',b:'tbc',e:'🕯️',free:false},
+      {id:'b7',t:'Dust all furniture tops, mirrors and picture frames',m:'10 min',b:'tbq',e:'🪞',free:false},
+      {id:'b8',t:'Style the nightstand: lamp, one candle, one small stem',m:'10 min',b:'tbr',e:'🌿',free:false},
+    ]
+  },
+  { id:'bathroom', label:'Bathroom', emoji:'🛁', day:2,
+    bg:'#e6eef8', hc:'#1a3a6b', tc:'rgba(26,58,107,.65)', tag:'Day 2',
+    title:'Your private spa',
+    desc:'Think boutique hotel, not hospital. Calm, curated, intentionally clean. Your morning routine deserves a beautiful space.',
+    candle:'Paddywax Eucalyptus + Sage or Nest Wild Mint & Eucalyptus', candleWhere:'$14–22 at Target',
+    flower:'Eucalyptus bundle from shower head — $4 at Trader Joe\'s',
+    swap:'Decant soap and shampoo into glass dispensers on the counter',
+    tasks:[
+      {id:'ba1',t:'Throw away every expired skincare, medication and beauty product',m:'15 min',b:'tbc',e:'💊',free:true},
+      {id:'ba2',t:'Scrub all tile grout lines with a stiff brush and paste',m:'20 min',b:'tbd',e:'🧱',free:true},
+      {id:'ba3',t:'Soak the showerhead overnight in a bag of white vinegar',m:'5 active',b:'tbr',e:'🚿',free:false},
+      {id:'ba4',t:'Deep clean the toilet — under the rim, around the base, behind it',m:'15 min',b:'tbd',e:'🚽',free:false},
+      {id:'ba5',t:'Wash the shower curtain liner cold with half cup baking soda',m:'30 min',b:'tbr',e:'🪣',free:false},
+      {id:'ba6',t:'Empty all cabinet storage, wipe the shelves, reorganise',m:'15 min',b:'tbc',e:'🗄️',free:false},
+      {id:'ba7',t:'Replace bath mats and hand towels with fresh white ones',m:'5 min',b:'tbr',e:'🛁',free:false},
+      {id:'ba8',t:'Scrub the sink, polish the taps, clean mirror until streak-free',m:'10 min',b:'tbq',e:'🪥',free:false},
+    ]
+  },
+  { id:'office', label:'Home office', emoji:'🌱', day:2,
+    bg:'#ecf4ee', hc:'#1a4228', tc:'rgba(26,66,40,.65)', tag:'Day 2',
+    title:'Where you do your best work',
+    desc:'A cluttered desk keeps your brain in reactive mode. One focused hour here changes how Mondays feel for months.',
+    candle:'Boy Smells Cedar + Sloane or Malin+Goetz Rosemary', candleWhere:'$22–38 at Sephora / nordstrom',
+    flower:'One small herb pot on the corner — rosemary or mint, $3',
+    swap:'One cable management box — the desk goes from chaos to calm',
+    tasks:[
+      {id:'o1',t:'Clear the desk completely — empty every single drawer',m:'20 min',b:'tbc',e:'🖥️',free:true},
+      {id:'o2',t:'Wipe monitor, keyboard and mouse with a screen-safe cloth',m:'10 min',b:'tbq',e:'⌨️',free:true},
+      {id:'o3',t:'Sort and label all cables — sleeve or clip each one',m:'15 min',b:'tbr',e:'🔌',free:false},
+      {id:'o4',t:'Work through every paper pile — file what matters, shred the rest',m:'30 min',b:'tbc',e:'📄',free:false},
+      {id:'o5',t:'Wipe chair, bookshelf, printer and all flat surfaces',m:'10 min',b:'tbq',e:'🪑',free:false},
+      {id:'o6',t:'Set up a simple in/out tray — papers never pile again',m:'10 min',b:'tbr',e:'📥',free:false},
+    ]
+  },
+  { id:'kids', label:'Kids\' rooms', emoji:'🎨', day:2,
+    bg:'#fbf3e3', hc:'#5a3a08', tc:'rgba(90,58,8,.65)', tag:'Day 2',
+    title:'Their sanctuary too',
+    desc:'Kids\' rooms are hardest because they feel like someone else\'s project. Set a 45-minute timer, involve the kids, make it a game.',
+    candle:'Skip candles here — try a kid-safe linen room spray instead', candleWhere:'$8 at Target',
+    flower:'A small potted plant they can water themselves',
+    swap:'Clear storage bins — kids actually put things away when they can see inside',
+    tasks:[
+      {id:'kd1',t:'Declutter toys together — donate what they\'ve outgrown',m:'30 min',b:'tbc',e:'🧸',free:true},
+      {id:'kd2',t:'Wipe all furniture, shelves and light switches',m:'15 min',b:'tbq',e:'✨',free:true},
+      {id:'kd3',t:'Wash all bedding and stuffed animals on a hot cycle',m:'40 min',b:'tbr',e:'🧺',free:false},
+      {id:'kd4',t:'Vacuum the mattress surface and the floor under the bed',m:'10 min',b:'tbd',e:'🛏️',free:false},
+      {id:'kd5',t:'Organise books, games and craft supplies into clear bins',m:'20 min',b:'tbc',e:'📚',free:false},
+      {id:'kd6',t:'Wipe all windows and windowsills throughout',m:'10 min',b:'tbq',e:'🪟',free:false},
+    ]
+  },
+  { id:'dining', label:'Dining room', emoji:'🌷', day:2,
+    bg:'#fbeaed', hc:'#6b1a2e', tc:'rgba(107,26,46,.65)', tag:'Day 2',
+    title:'The table you always mean to set',
+    desc:'The dining room becomes a dumping ground so slowly you stop noticing. Reset it and you\'ll actually want to eat there.',
+    candle:'Nest Grapefruit or Voluspa Baltic Amber', candleWhere:'$18–28 at Target / Sephora',
+    flower:'5 tulips or daffodils centred on the table — $4 at any grocer',
+    swap:'A linen table runner in white or natural — makes any table look styled',
+    tasks:[
+      {id:'dn1',t:'Clear the table completely — it is not a surface for mail',m:'10 min',b:'tbc',e:'🍽️',free:true},
+      {id:'dn2',t:'Polish the tabletop and wipe all chairs thoroughly',m:'15 min',b:'tbq',e:'✨',free:true},
+      {id:'dn3',t:'Wash or dry-clean the table runner and all placemats',m:'20 min',b:'tbr',e:'🧺',free:false},
+      {id:'dn4',t:'Wipe the sideboard or buffet and reorganise serving pieces',m:'15 min',b:'tbc',e:'🪵',free:false},
+      {id:'dn5',t:'Clean the overhead light fixture above the table',m:'10 min',b:'tbq',e:'💡',free:false},
+      {id:'dn6',t:'Style the table: candle, vase with stems, linen runner',m:'10 min',b:'tbr',e:'🌷',free:false},
+    ]
+  },
+  { id:'guest', label:'Guest room', emoji:'🛏️', day:3,
+    bg:'#ecf4ee', hc:'#1a4228', tc:'rgba(26,66,40,.65)', tag:'Day 3',
+    title:'The room that shows you care',
+    desc:'A ready guest room says something quiet and beautiful about who you are as a host. It just needs to feel fresh and welcoming.',
+    candle:'Voluspa French Cade Lavender or Capri Blue Aloha Orchid', candleWhere:'$14–22 at Target',
+    flower:'A grocery store tulip bouquet on the nightstand',
+    swap:'A small tray with a candle, a glass and a single book',
+    tasks:[
+      {id:'gr1',t:'Strip and freshly wash all guest bedding',m:'40 min',b:'tbr',e:'🛏️',free:true},
+      {id:'gr2',t:'Remove anything you\'ve stored in here that doesn\'t belong',m:'20 min',b:'tbc',e:'🗂️',free:true},
+      {id:'gr3',t:'Dust all furniture, lamps and surfaces',m:'15 min',b:'tbq',e:'✨',free:false},
+      {id:'gr4',t:'Clear drawer and closet space for a guest\'s belongings',m:'10 min',b:'tbc',e:'🗄️',free:false},
+      {id:'gr5',t:'Hang fresh towels and place a small welcome detail',m:'10 min',b:'tbr',e:'🛁',free:false},
+      {id:'gr6',t:'Style the nightstand: lamp, glass of water, small candle',m:'10 min',b:'tbr',e:'🕯️',free:false},
+    ]
+  },
+  { id:'systems', label:'Home systems', emoji:'🏡', day:3,
+    bg:'#f5ede6', hc:'#3a2810', tc:'rgba(58,40,16,.65)', tag:'Day 3 · the invisible work',
+    title:'What holds everything together',
+    desc:'These are the tasks most people never do — and then wonder why the house feels worn. One afternoon here gives your home a year\'s worth of freshness.',
+    candle:'Your absolute favourite. You\'ve earned it.', candleWhere:'',
+    flower:'Fresh flowers on the dining table — you deserve them',
+    swap:'Replace plug-in air fresheners with a real reed diffuser',
+    tasks:[
+      {id:'s1',t:'Replace HVAC filters and air purifier filters throughout',m:'10 min',b:'tbd',e:'💨',free:true},
+      {id:'s2',t:'Test every smoke and CO detector — replace old batteries',m:'5 min',b:'tbq',e:'🔋',free:true},
+      {id:'s3',t:'Walk every room replacing every burned-out bulb',m:'10 min',b:'tbq',e:'💡',free:false},
+      {id:'s4',t:'Clean all ceiling fan blades and light fittings',m:'15 min',b:'tbd',e:'🌀',free:false},
+      {id:'s5',t:'Wipe every baseboard and door frame throughout the home',m:'30 min',b:'tbd',e:'🧹',free:false},
+      {id:'s6',t:'Machine-wash curtains or deep-clean all blinds',m:'30 min',b:'tbd',e:'🪟',free:false},
+      {id:'s7',t:'Sanitise all high-touch surfaces — switches, handles, remotes',m:'10 min',b:'tbq',e:'🦠',free:false},
+      {id:'s8',t:'Throw out anything broken you\'ve been meaning to fix for months',m:'15 min',b:'tbc',e:'🗑️',free:false},
+      {id:'s9',t:'Open every window 15 minutes — flush out the last of winter',m:'1 min',b:'tbr',e:'🌬️',free:false},
+      {id:'s10',t:'Buy yourself flowers. Place them where you spend the most time.',m:'15 min',b:'tbr',e:'🌸',free:false},
+    ]
+  },
+];
+
+// ── SHOP (real products, affiliate links) ─────────────────────────────────
+const SHOP = [
+  {id:'s1',cat:'viral',name:'The Pink Stuff paste',brand:'Star Brands · 17.6oz',why:'The #1 CleanTok bestseller. Ovens, grout, burnt pans — nearly any surface.',price:'$5.97',store:'Amazon',icon:'🪣',bg:'si-p',url:`https://www.amazon.com/s?k=the+pink+stuff+cleaning+paste&tag=${TAG}`},
+  {id:'s2',cat:'viral',name:'Scrub Daddy 8-pack',brand:'Scrub Daddy',why:'The original CleanTok sponge. Firm cold, gentle warm. Scratch-free on everything.',price:'$12.98',store:'Amazon',icon:'😊',bg:'si-a',url:`https://www.amazon.com/s?k=scrub+daddy+8+pack&tag=${TAG}`},
+  {id:'s3',cat:'viral',name:'Bar Keepers Friend powder',brand:'Bar Keepers Friend · 12oz',why:'Rust stains, hard water marks, soap scum — removes what nothing else touches.',price:'$5.28',store:'Amazon',icon:'💪',bg:'si-g',url:`https://www.amazon.com/s?k=bar+keepers+friend+powder+cleanser&tag=${TAG}`},
+  {id:'s4',cat:'viral',name:'Angry Mama microwave cleaner',brand:'Angry Mama',why:'Fill with vinegar + water, microwave 7 min — interior wipes clean instantly.',price:'$8.99',store:'Amazon',icon:'😤',bg:'si-p',url:`https://www.amazon.com/s?k=angry+mama+microwave+steam+cleaner&tag=${TAG}`},
+  {id:'s5',cat:'viral',name:'Bissell Little Green Machine',brand:'Bissell · 1400B',why:'The portable upholstery and carpet cleaner TikTok can\'t stop showing.',price:'$109.00',store:'Target / Amazon',icon:'🟢',bg:'si-g',url:`https://www.amazon.com/s?k=bissell+little+green+machine+1400&tag=${TAG}`},
+  {id:'s6',cat:'cleaners',name:'Mrs. Meyer\'s Lemon Verbena spray',brand:'Mrs. Meyer\'s · 16oz',why:'Plant-derived, spring-scented. Makes cleaning feel like self-care.',price:'$4.49',store:'Target',icon:'🍋',bg:'si-g',url:'https://www.target.com/s?searchTerm=mrs+meyers+lemon+verbena+multi+surface'},
+  {id:'s7',cat:'cleaners',name:'Mrs. Meyer\'s Peony 3-pack',brand:'Mrs. Meyer\'s · Spring 2025',why:'The Spring 2025 launch. Light peony + herbs. Soft enough for any room.',price:'$13.99',store:'Target',icon:'🌸',bg:'si-p',url:'https://www.target.com/s?searchTerm=mrs+meyers+peony+clean+day'},
+  {id:'s8',cat:'cleaners',name:'Grove Co. glass bottle starter kit',brand:'Grove Collaborative',why:'Refillable glass bottles + concentrate tablets. Zero plastic, excellent scents.',price:'$12.99',store:'Grove / Amazon',icon:'🌿',bg:'si-g',url:`https://www.amazon.com/s?k=grove+collaborative+glass+spray+bottle+set&tag=${TAG}`},
+  {id:'s9',cat:'cleaners',name:'Seventh Generation dish soap',brand:'Seventh Gen · Free & Clear',why:'Plant-based, fragrance-free, safe for sensitive skin. 25oz refill bottle.',price:'$5.49',store:'Walmart / Target',icon:'💧',bg:'si-b',url:'https://www.walmart.com/search?q=seventh+generation+dish+soap+free+clear'},
+  {id:'s10',cat:'tools',name:'Electric spin scrubber',brand:'Tilswall / Homitt',why:'The viral TikTok grout scrubber. Removes years of buildup in seconds.',price:'$26.99',store:'Amazon',icon:'🔄',bg:'si-a',url:`https://www.amazon.com/s?k=electric+spin+scrubber+bathroom+cleaning&tag=${TAG}`},
+  {id:'s11',cat:'tools',name:'Microfibre cloth 12-pack',brand:'Amazon Basics',why:'Replace paper towels. Dry for dust, damp for surfaces. Wash and reuse.',price:'$10.99',store:'Amazon',icon:'🧤',bg:'si-g',url:`https://www.amazon.com/s?k=amazon+basics+microfiber+cloth+12+pack&tag=${TAG}`},
+  {id:'s12',cat:'tools',name:'Swiffer PowerMop starter kit',brand:'Swiffer',why:'Cordless, pivoting, cleaning solution included. Fastest floor clean.',price:'$34.99',store:'Target',icon:'🧹',bg:'si-g',url:'https://www.target.com/s?searchTerm=swiffer+powermop+starter'},
+  {id:'s13',cat:'tools',name:'OXO Good Grips cleaning set',brand:'OXO',why:'The 8-piece set with grout brush, detail brush, and scrubber. Worth every penny.',price:'$19.99',store:'Amazon / Target',icon:'🧽',bg:'si-b',url:`https://www.amazon.com/s?k=oxo+good+grips+cleaning+brush+set&tag=${TAG}`},
+  {id:'s14',cat:'organise',name:'Rubbermaid Brilliance 30-set',brand:'Rubbermaid',why:'Stackable, airtight, BPA-free. Transforms a chaotic pantry into calm.',price:'$38.99',store:'Amazon',icon:'📦',bg:'si-g',url:`https://www.amazon.com/s?k=rubbermaid+brilliance+food+storage+30+set&tag=${TAG}`},
+  {id:'s15',cat:'organise',name:'iDesign under-sink organiser',brand:'iDesign',why:'2-tier, pull-out shelves. Doubles under-sink space in 10 minutes.',price:'$24.99',store:'Amazon / Target',icon:'🗄️',bg:'si-b',url:`https://www.amazon.com/s?k=idesign+under+sink+organizer+2+tier&tag=${TAG}`},
+  {id:'s16',cat:'organise',name:'Bamboo drawer dividers 8-set',brand:'Lifewit / DECOMOMO',why:'The nightstand and kitchen junk drawer fix. Adjust to any size.',price:'$18.99',store:'Amazon',icon:'🪵',bg:'si-a',url:`https://www.amazon.com/s?k=bamboo+drawer+dividers+set+adjustable&tag=${TAG}`},
+  {id:'s17',cat:'refresh',name:'Capri Blue Volcano candle 8oz',brand:'Capri Blue',why:'The candle that makes every home smell like Anthropologie. Spring must.',price:'$19.95',store:'Target / Anthropologie',icon:'🌋',bg:'si-a',url:`https://www.amazon.com/s?k=capri+blue+volcano+candle+8+oz&tag=${TAG}`},
+  {id:'s18',cat:'refresh',name:'Paddywax Eucalyptus + Sage',brand:'Paddywax · 3.5oz',why:'Spa-quality, instantly calming. The bathroom candle everyone reaches for.',price:'$14.99',store:'Target',icon:'🌿',bg:'si-g',url:'https://www.target.com/s?searchTerm=paddywax+eucalyptus+sage+candle'},
+  {id:'s19',cat:'refresh',name:'Voluspa French Cade Lavender',brand:'Voluspa · 5oz tin',why:'Sophisticated lavender — not old-fashioned. Bedroom and guest room.',price:'$18.00',store:'Target / Sephora',icon:'💜',bg:'si-v',url:`https://www.amazon.com/s?k=voluspa+french+cade+lavender+candle&tag=${TAG}`},
+  {id:'s20',cat:'refresh',name:'Nest Grapefruit reed diffuser',brand:'Nest Fragrances · 5.9oz',why:'Long-lasting, bright, airy. The scent guests always ask about.',price:'$24.00',store:'Target / Nordstrom',icon:'🍊',bg:'si-a',url:`https://www.amazon.com/s?k=nest+fragrances+grapefruit+reed+diffuser&tag=${TAG}`},
+  {id:'s21',cat:'refresh',name:'Mrs. Meyer\'s room spray · Peony',brand:'Mrs. Meyer\'s · 8oz',why:'The 2025 spring launch. Spray on linens, cushions and in the air.',price:'$5.99',store:'Target / Walmart',icon:'🌸',bg:'si-p',url:'https://www.target.com/s?searchTerm=mrs+meyers+peony+room+spray'},
+];
+
+const SHOP_CATS = [{id:'all',l:'All'},{id:'viral',l:'🔥 CleanTok viral'},{id:'cleaners',l:'Cleaners'},{id:'tools',l:'Tools'},{id:'organise',l:'Organise'},{id:'refresh',l:'Scent + refresh'}];
+
+// ── SCENTS ────────────────────────────────────────────────────────────────
+const SCENTS = [
+  {name:'Capri Blue Volcano',brand:'$20–34 · Target / Anthropologie',desc:'The candle that launched a thousand home tours. Tropical citrus, sugared oranges. Works in literally any room.',rooms:'Living room · Entryway',bg:'#fbf6e0',icon:'🌋',url:`https://www.amazon.com/s?k=capri+blue+volcano+candle&tag=${TAG}`},
+  {name:'Mrs. Meyer\'s Peony',brand:'$4.49 · Target · Spring 2025 drop',desc:'The freshest launch of this spring. Soft peony with clean herb undertones. Daytime, light, effortless.',rooms:'Kitchen · Office · Any room',bg:'#fbeaed',icon:'🌸',url:'https://www.target.com/s?searchTerm=mrs+meyers+peony'},
+  {name:'Paddywax Eucalyptus + Sage',brand:'$14.99 · Target',desc:'Spa-clean, instantly calming. The scent that says "I have my life together" without trying.',rooms:'Bathroom · Bedroom',bg:'#ecf4ee',icon:'🌿',url:'https://www.target.com/s?searchTerm=paddywax+eucalyptus+sage+candle'},
+  {name:'Voluspa French Cade Lavender',brand:'$18 · Target · Sephora',desc:'Sophisticated lavender. Not old-fashioned — think boutique hotel lobby. Bedroom essential.',rooms:'Bedroom · Guest room',bg:'#f0eefb',icon:'💜',url:`https://www.amazon.com/s?k=voluspa+french+cade+lavender&tag=${TAG}`},
+  {name:'Nest Grapefruit',brand:'$24 · Target · Nordstrom',desc:'Bright, citrusy, airy. The reed diffuser scent guests ask about. Best for entryways and kitchens.',rooms:'Entryway · Kitchen',bg:'#fbf3e3',icon:'🍊',url:`https://www.amazon.com/s?k=nest+fragrances+grapefruit&tag=${TAG}`},
+  {name:'Yankee Candle Clean Cotton',brand:'$12–28 · Walmart · Target',desc:'Fresh laundry in a jar. Comforting, clean, universally loved. Perfect for entryways and living spaces.',rooms:'Entryway · Living room',bg:'#e6eef8',icon:'🌬️',url:'https://www.walmart.com/search?q=yankee+candle+clean+cotton'},
+  {name:'Better Homes & Gardens Lychee Cloud',brand:'$3.97 wax melt · Walmart',desc:'The 2025 spring trending scent at Walmart. Fruity-floral, light, Bridgerton-adjacent.',rooms:'Living room · Dining room',bg:'#fbeaed',icon:'🍡',url:'https://www.walmart.com/search?q=better+homes+gardens+lychee+wax+melt'},
+];
+
+// ── FLOWERS ───────────────────────────────────────────────────────────────
+const FLOWERS = [
+  {name:'Peony tulips',season:'March – April at Trader Joe\'s',desc:'The viral spring flower of 2025. Multi-layered petals that look like peonies but cost $9.99 a bunch. TikTok has over 450K views on these alone.',where:'Trader Joe\'s · $9.99/bunch',tip:'Buy tight-budded. They open beautifully over 3–4 days. Put a penny in the vase — TikTok swears it keeps them upright.',icon:'🌷',bg:'#fbeaed'},
+  {name:'Ranunculus',season:'March – April · Trader Joe\'s',desc:'The Pinterest flower of 2025. Layered petals, looks expensive, costs $6.99 a bunch. Joanna Gaines\' favourite.',where:'Trader Joe\'s · $6.99',tip:'Pastel peach, soft coral, creamy white — the 2025 shades. 5 stems in a simple ceramic or glass vase is enough.',icon:'🌸',bg:'#f5ede6'},
+  {name:'Tulips',season:'March – May everywhere',desc:'The quintessential spring flower. 10 stems for $4 at any grocery store. Try apricot, lavender or cream — not just red.',where:'Any grocer · $3–13 · Trader Joe\'s · Whole Foods',tip:'Trim at an angle, change water daily. They last 7–10 days. Keep away from fruit — ethylene gas wilts them faster.',icon:'🌷',bg:'#fbf3e3'},
+  {name:'Peonies',season:'May – June · Trader Joe\'s',desc:'The moment florists get peonies in NJ, buy them. Blowsy, fragrant, they make any room feel intentionally curated.',where:'Trader Joe\'s May–July · Local NJ florists · Costco',tip:'Buy firm and tight — they open over 3–5 days. One stem in a bud vase on the nightstand is enough to transform a room.',icon:'💐',bg:'#fbeaed'},
+  {name:'Eucalyptus',season:'Year-round',desc:'Not a flower — but the single most impactful thing you can put in a vase. Fills space, smells incredible, lasts weeks.',where:'Trader Joe\'s · $3–5 · Most florists',tip:'Hang a bunch from your shower head with a rubber band. The steam activates the oils — free spa upgrade every shower.',icon:'🌿',bg:'#ecf4ee'},
+  {name:'Daffodils',season:'February – April',desc:'Cheerful, cheap, unmistakably spring. A bunch of 10 for $3 at the grocery store.',where:'Any grocery store · $2.99–5.99',tip:'Don\'t mix with other flowers — they release a chemical that shortens the life of other stems. Solo in their own vase only.',icon:'🌼',bg:'#fbf3e3'},
+  {name:'Cherry blossom branches',season:'April · NJ is famous for these',desc:'Branch Brook Park in Newark has 2,700 cherry blossom trees — one of the largest collections outside Japan. Buy branches from florists.',where:'Branch Brook Park, Newark NJ · Local florists in April',tip:'Buy faux silk ones from Target\'s Hearth + Hand ($12) for an all-season branch that photographs beautifully.',icon:'🌺',bg:'#fbeaed'},
+];
+
+// ── AFFIRMS ───────────────────────────────────────────────────────────────
+const AFFIRMS = [
+  'Your home doesn\'t have to be perfect. It needs to feel like yours.',
+  'The woman with the beautiful home didn\'t do it all at once. She did one room on a Tuesday.',
+  'A candle lit and one surface cleared is a real reset. Don\'t wait for the whole house.',
+  'You commute, you work, you parent. Fifteen minutes a day is more than enough.',
+  'You\'re not just cleaning. You\'re taking care of yourself.',
+  'One vase of tulips makes everything else feel less heavy. Start there.',
+  'Five focused minutes beats two hours of avoidance every time.',
+];
+
+const OBQ = [
+  {q:'How does your home feel right now?',hint:'This shapes which rooms we surface first.',opts:['Completely overwhelmed — I don\'t know where to start','Pretty cluttered but manageable','Mostly fine, just needs a seasonal refresh','I\'m organised and want a deep structured clean']},
+  {q:'How much time can you give each day?',hint:'There\'s no wrong answer. 15 minutes is real.',opts:['15–20 minutes is genuinely all I have','30–45 minutes before or after the kids are in bed','An hour, maybe more on weekends','I\'m setting aside a full weekend for this']},
+  {q:'What do you want to feel at the end?',hint:'The emotional outcome matters more than clean floors.',opts:['Calm — like I can exhale when I walk in','Proud — like I\'d be fine with anyone stopping by','Renewed — like spring actually arrived in my home','Ready — like I finally have it together']},
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+let S = load() || {scr:'welcome',ob:{},obStep:0,unlocked:false,tasks:{},activeRoom:null,tab:'rooms',dTab:'all',sCat:'all',cart:[],tMode:15,tOn:false,tLeft:900,tBase:900};
+let TI = null;
+
+const el = id => document.getElementById(id);
+const render = html => { el('screen').innerHTML = html; };
+
+const cv = () => '<svg viewBox="0 0 10 8"><polyline points="1,4 3.5,6.5 9,1"/></svg>';
+const lk = () => '<svg class="lkico" viewBox="0 0 14 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="7" width="12" height="9" rx="2"/><path d="M4 7V5a3 3 0 016 0v2"/></svg>';
+const dot = () => '<svg width="9" height="7" viewBox="0 0 9 7" stroke="#3a6648" stroke-width="2.2" fill="none"><polyline points="1,3.5 3.2,5.8 8,1"/></svg>';
+
+const allIds = () => ROOMS.flatMap(r => r.tasks.map(t => t.id));
+const dnCount = () => allIds().filter(id => S.tasks[id]).length;
+const totPct = () => Math.round(dnCount() / allIds().length * 100);
+const rDone = r => r.tasks.filter(t => S.tasks[t.id]).length;
+const rPct = r => Math.round(rDone(r) / r.tasks.length * 100);
+const bl = b => ({tbd:'deep clean',tbq:'quick win',tbr:'refresh',tbc:'declutter'}[b] || '');
+const cTotal = () => S.cart.reduce((a,id) => { const p = SHOP.find(x=>x.id===id); return a+(p?parseFloat(p.price.replace('$','').replace(',','')):0); },0).toFixed(2);
+
+const toggleTask = id => {
+  const task = ROOMS.flatMap(r=>r.tasks).find(t=>t.id===id);
+  if (!task) return;
+  if (!S.unlocked && !task.free) { showGuide(); return; }
+  S.tasks[id] = !S.tasks[id]; save();
+  if (S.activeRoom) showRoom(S.activeRoom);
+  else if (S.tab==='diff') showDiff();
+  else showRooms();
+};
+
+const toggleCart = id => {
+  const i = S.cart.indexOf(id);
+  if (i>-1) S.cart.splice(i,1); else S.cart.push(id);
+  save(); showShop();
+};
+
+const setTab = t => {
+  S.tab=t; S.activeRoom=null; save();
+  const map = {rooms:showRooms,diff:showDiff,shop:showShop,scent:showScent,flowers:showFlowers,guide:showGuide,timer:showTimer};
+  (map[t]||showRooms)();
+};
+
+// ── SHARED UI ─────────────────────────────────────────────────────────────
+const nav = () => {
+  const tabs = [['rooms','Rooms'],['diff','By effort'],['shop','Shop'],['scent','Scents'],['flowers','Flowers'],['guide','Guide'],['timer','Timer']];
+  return `<div class="topnav">${tabs.map(([id,l])=>`<button class="tn${S.tab===id?' on':''}" onclick="setTab('${id}')">${l}</button>`).join('')}</div>`;
+};
+
+const pbar = title => {
+  const pct = totPct();
+  return `<div class="pbar"><div class="pbar-row"><div class="pbar-title">${title}</div><div style="text-align:right"><div class="pbar-n">${pct}%</div><div class="pbar-s">${dnCount()} of ${allIds().length} tasks</div></div></div><div class="pbar-track"><div class="pbar-fill" style="width:${pct}%"></div></div></div>`;
+};
+
+const taskRow = (t, showRoom = false) => {
+  const dn = !!S.tasks[t.id], lkd = !S.unlocked && !t.free;
+  return `<div class="tr${dn?' done':''}${lkd?' lk':''}" onclick="${lkd?'showGuide()':'toggleTask(\''+t.id+'\')'}">
+    ${lkd ? lk() : `<div class="chk${dn?' on':''}">${cv()}</div>`}
+    <div class="td"><span class="tn">${t.t}</span><span class="tbadge ${t.b}">${bl(t.b)}</span>
+    <div class="tmeta">${t.m}${lkd?' · <span style="color:var(--gold);font-weight:500">free with email</span>':''}</div></div>
+  </div>`;
+};
+
+// ── WELCOME ───────────────────────────────────────────────────────────────
+const showWelcome = () => {
+  S.scr='welcome'; save();
+  render(`<div class="w-cover">
+  <div class="w-cover-img">🌸</div>
+  <div class="w-cover-content">
+    <div class="w-tag">Bloom · Spring Reset 2025</div>
+    <div class="w-title">Make your home<br>feel like <em>spring</em><br>arrived on purpose.</div>
+    <div class="w-sub">A room-by-room ritual with candles, flowers and the calm your home deserves. Built for real life.</div>
+    <div class="w-proof"><span class="w-stars">★★★★★</span><span class="w-pt">4.9 · 3,400+ spring resets</span></div>
+  </div>
+</div>
+<div class="px pt pb">
+  <button class="btn btn-s" onclick="startOb()">Begin my spring reset →</button>
+  ${S.ob.q0!==undefined?'<button class="btn btn-o" onclick="setTab(\'rooms\')">Continue my reset</button>':''}
+  <p style="text-align:center;margin-top:1.25rem;font-size:11px;color:var(--muted);line-height:2">Free to start · Progress saved · No account needed</p>
+</div>`);
+};
+
+// ── ONBOARDING ────────────────────────────────────────────────────────────
+const startOb = () => { S.scr='ob'; S.obStep=0; save(); renderOb(); };
+const renderOb = () => {
+  const q=OBQ[S.obStep], step=S.obStep;
+  render(`<div class="ob-cover">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem">
+    <button class="btn-ghost" style="color:rgba(255,255,255,.4)" onclick="${step>0?'S.obStep--;save();renderOb()':'showWelcome()'}">← back</button>
+    <span style="font-size:11px;color:rgba(255,255,255,.3)">${step+1} / ${OBQ.length}</span>
+  </div>
+  <div class="ob-bar">${OBQ.map((_,i)=>`<div class="ob-seg${i<=step?' on':''}"></div>`).join('')}</div>
+  <div class="ob-q">${q.q}</div>
+  <div class="ob-hint">${q.hint}</div>
+</div>
+<div class="ob-opts">
+  ${q.opts.map((o,i)=>`<button class="ob-opt${S.ob['q'+step]===i?' on':''}" onclick="S.ob['q${step}']=${i};save();renderOb()">${o}</button>`).join('')}
+  ${S.ob['q'+step]!==undefined?`<button class="btn btn-s" onclick="${step<OBQ.length-1?'S.obStep++;save();renderOb()':'setTab(\'rooms\')'}">${step<OBQ.length-1?'Continue →':'See my rooms →'}</button>`:''}
+</div>`);
+};
+
+// ── ROOMS ─────────────────────────────────────────────────────────────────
+const showRooms = () => {
+  S.tab='rooms'; S.activeRoom=null; save();
+  const affirm = AFFIRMS[dnCount() % AFFIRMS.length];
+  const cards = ROOMS.map(r => {
+    const done=rDone(r), tot=r.tasks.length, pct=rPct(r), allDone=done===tot;
+    return `<div class="rc" onclick="showRoom('${r.id}')">
+      <div class="rc-header" style="background:${r.bg}">
+        <div class="rc-bg">${r.emoji}</div>
+        <span class="rc-tag" style="background:${r.tc};color:#fff">${r.tag}</span>
+        <span class="rc-pct" style="color:${r.hc}">${pct}%</span>
+      </div>
+      <div class="rc-body">
+        <div class="rc-room">${r.label}</div>
+        <div class="rc-title">${r.title}</div>
+        <div class="rc-sub">${r.desc}</div>
+        <div class="rc-chips">
+          <span class="chip">🕯️ ${r.candle.split(' or ')[0]}</span>
+          <span class="chip">💐 ${r.flower.split('—')[0].trim()}</span>
+        </div>
+        <div class="rc-foot">
+          <div class="rc-prog"><div class="rc-prog-fill" style="width:${pct}%;background:${pct===100?'var(--sage)':'var(--gold)'}"></div></div>
+          <span class="rc-cnt">${done}/${tot}</span>
+          <button class="rc-btn${allDone?' done':''}" onclick="event.stopPropagation();showRoom('${r.id}')">${allDone?'✓ Done':'Open →'}</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  render(`${pbar('Spring reset')}${nav()}
+<div class="gap"></div>
+<div class="affirm px"><div class="affirm-text">"${affirm}"</div></div>
+<div class="gap"></div>
+<div class="rooms-list">${cards}</div>
+${!S.unlocked?`<div class="lock-nudge" onclick="showGuide()"><div><div class="ln-t">Unlock all 10 rooms free</div><div class="ln-s">Enter your email — instant access, no payment</div></div><span class="ln-cta">Get access →</span></div>`:''}
+<div class="gap2"></div>`);
+};
+
+// ── ROOM DETAIL ───────────────────────────────────────────────────────────
+const showRoom = id => {
+  S.activeRoom=id; save();
+  const r = ROOMS.find(x=>x.id===id);
+  const done=rDone(r), tot=r.tasks.length;
+  render(`<div class="rd-cover" style="background:${r.bg}">
+  <div class="rd-bg">${r.emoji}</div>
+  <div class="rd-inner">
+    <div class="rd-eyebrow" style="color:${r.hc}">${r.label}</div>
+    <div class="rd-h" style="color:${r.hc}">${r.title.split(' ').slice(0,3).join(' ')}<br><em>${r.title.split(' ').slice(3).join(' ')}</em></div>
+  </div>
+</div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.375rem;border-bottom:1px solid var(--border)">
+  <button class="btn-ghost" onclick="showRooms()">← rooms</button>
+  <span style="font-size:12px;color:var(--muted)">${done}/${tot} done</span>
+</div>
+<div class="rd-body">
+  <div class="rd-quote">${r.desc}</div>
+  <div class="vibes">
+    <div class="vibe"><span class="vibe-i">🕯️</span><span class="vibe-l">Candle</span><span class="vibe-v">${r.candle.split(' or ')[0].split(' ').slice(0,3).join(' ')}</span></div>
+    <div class="vibe"><span class="vibe-i">💐</span><span class="vibe-l">Flower</span><span class="vibe-v">${r.flower.split('—')[0].trim().split(' ').slice(0,4).join(' ')}</span></div>
+    <div class="vibe"><span class="vibe-i">✨</span><span class="vibe-l">One swap</span><span class="vibe-v">${r.swap.split(' ').slice(0,4).join(' ')}…</span></div>
+  </div>
+  <div class="detail-panel">
+    <div class="dp-row"><div class="dp-label">Candle</div><div class="dp-val">${r.candle}${r.candleWhere?` · ${r.candleWhere}`:''}</div></div>
+    <div class="dp-row"><div class="dp-label">Flowers</div><div class="dp-val">${r.flower}</div></div>
+    <div class="dp-row" style="margin-bottom:0"><div class="dp-label">One seasonal swap</div><div class="dp-val">${r.swap}</div></div>
+  </div>
+  <div class="task-hd"><div class="task-hd-title">Tasks</div><span class="task-pill">${done}/${tot}</span></div>
+  ${r.tasks.map(t=>taskRow(t)).join('')}
+</div>
+${!S.unlocked?`<div class="lock-nudge" style="margin-top:0" onclick="showGuide()"><div><div class="ln-t">Unlock all ${tot} tasks</div><div class="ln-s">Free with your email</div></div><span class="ln-cta">Unlock →</span></div>`:''}
+<div class="gap2"></div>`);
+};
+
+// ── BY DIFFICULTY ─────────────────────────────────────────────────────────
+const DIFF = {
+  all:{title:'All tasks',desc:'Every task across all 10 rooms. Browse freely and check off anything in any order.',cls:'all'},
+  tbq:{title:'Quick wins',desc:'Under 15 minutes each. Start here when energy is low or time is short. Momentum is the goal.',cls:'tbq'},
+  tbc:{title:'Declutter',desc:'Decisions not scrubbing. Set a timer. Be honest. Things leaving = space entering your life.',cls:'tbc'},
+  tbr:{title:'Refresh',desc:'Washing, airing, swapping. These make your home feel genuinely new — not just tidier.',cls:'tbr'},
+  tbd:{title:'Deep clean',desc:'The real work. Save these for when you have time and energy. They\'re worth doing properly.',cls:'tbd'},
+};
+
+const showDiff = () => {
+  S.tab='diff'; S.activeRoom=null; save();
+  const sel = S.dTab || 'all';
+  const info = DIFF[sel];
+  const allT = ROOMS.flatMap(r=>r.tasks.map(t=>({...t,rl:r.label})));
+  const filtered = sel==='all' ? allT : allT.filter(t=>t.b===sel);
+  const cnt = (k) => k==='all' ? allT.length : allT.filter(t=>t.b===k).length;
+  const dn = (k) => k==='all' ? dnCount() : allT.filter(t=>t.b===k&&S.tasks[t.id]).length;
+  const accentColors = {tbd:'var(--sage)',tbq:'#c4973a',tbr:'#3070b0',tbc:'#a85060'};
+
+  const chips = Object.entries(DIFF).map(([k,v])=>
+    `<button class="dc${sel===k?' on':''}" data-k="${k}" onclick="S.dTab='${k}';save();showDiff()">${v.title} <span style="opacity:.5;font-size:10px">${dn(k)}/${cnt(k)}</span></button>`
+  ).join('');
+
+  const cards = filtered.map(t=>{
+    const done=!!S.tasks[t.id], lkd=!S.unlocked&&!t.free;
+    const col=accentColors[t.b]||'var(--sage)';
+    return `<div class="vc${done?' done':''}${lkd?' lk':''}" onclick="${lkd?'showGuide()':'toggleTask(\''+t.id+'\')'}">
+      <div class="vc-accent" style="background:${col}"></div>
+      ${lkd?`<span class="vc-lk">🔒</span>`:`<div class="vc-chk${done?' on':''}">${cv()}</div>`}
+      <span class="vc-icon">${t.e}</span>
+      <div class="vc-name">${t.t}</div>
+      <div class="vc-room">${t.rl}</div>
+      <div class="vc-time">${t.m}</div>
+    </div>`;
+  }).join('');
+
+  render(`${pbar('By effort')}${nav()}
+<div class="diff-chips">${chips}</div>
+<div class="diff-banner ${sel}">
+  <div class="db-title">${info.title} · ${dn(sel)}/${cnt(sel)} done</div>
+  <div class="db-desc">${info.desc}</div>
+</div>
+<div class="vgrid">${cards}</div>
+${!S.unlocked?`<div class="lock-nudge" onclick="showGuide()"><div><div class="ln-t">Unlock all tasks</div><div class="ln-s">Free — enter your email to access everything</div></div><span class="ln-cta">Free →</span></div>`:''}
+<div class="gap2"></div>`);
+};
+
+// ── SHOP ──────────────────────────────────────────────────────────────────
+const showShop = () => {
+  S.tab='shop'; save();
+  const cat=S.sCat||'all';
+  const items = cat==='all' ? SHOP : SHOP.filter(p=>p.cat===cat);
+  const total=cTotal(), cc=S.cart.length;
+  const catBtns = SHOP_CATS.map(c=>`<button class="sc-btn${cat===c.id?' on':''}" onclick="S.sCat='${c.id}';save();showShop()">${c.l}</button>`).join('');
+  const list = items.map(p=>{
+    const inCart=S.cart.includes(p.id);
+    return `<a class="si" href="${p.url}" target="_blank" rel="noopener noreferrer">
+      <div class="si-icon ${p.bg}">${p.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div class="si-name">${p.name}</div>
+        <div class="si-brand">${p.brand}</div>
+        <div class="si-why">${p.why}</div>
+        ${inCart?'<div class="si-added">✓ On your list</div>':''}
+      </div>
+      <div class="si-r">
+        <div class="si-price">${p.price}</div>
+        <div class="si-store">${p.store}</div>
+        <button class="si-add${inCart?' on':''}" onclick="event.preventDefault();event.stopPropagation();toggleCart('${p.id}')">${inCart?'✓':'+'}</button>
+      </div>
+    </a>`;
+  }).join('');
+
+  render(`<div class="shop-header">
+  <div class="t-eyebrow" style="color:rgba(255,255,255,.4);margin-bottom:.75rem">Spring kit · 2025</div>
+  <div class="shop-h">Everything you actually need.</div>
+  <div class="shop-s">Real prices. Real products. Tap anything to buy at Amazon, Target or Walmart.</div>
+  ${cc>0?`<div class="shop-subtotal"><span style="font-size:12px;color:rgba(255,255,255,.5)">${cc} item${cc>1?'s':''} saved</span><span style="font-size:15px;font-weight:500;color:#fff">~$${total}</span></div>`:''}
+</div>${nav()}
+<div class="shop-cats">${catBtns}</div>
+<div class="px pb">${list}</div>
+<div style="padding:.5rem 1.375rem 1.5rem;font-size:11px;color:var(--muted);line-height:1.7">Prices are approximate and may vary. Tap any item to shop at the retailer directly. Bloom may earn a small affiliate commission — at no extra cost to you.</div>`);
+};
+
+// ── SCENTS ────────────────────────────────────────────────────────────────
+const showScent = () => {
+  S.tab='scent'; save();
+  const cards = SCENTS.map(s=>`<a class="scent-card" href="${s.url}" target="_blank" rel="noopener">
+    <div class="sco" style="background:${s.bg}">${s.icon}</div>
+    <div style="flex:1">
+      <div class="sc-name">${s.name}</div>
+      <div class="sc-brand">${s.brand}</div>
+      <div class="sc-desc">${s.desc}</div>
+      <span class="sc-rooms" style="background:${s.bg};color:var(--mid)">${s.rooms}</span>
+      <div class="sc-shop">Shop now →</div>
+    </div>
+  </a>`).join('');
+
+  render(`${pbar('Scent guide')}${nav()}
+<div class="px pt">
+  <div class="t-section" style="margin-bottom:.35rem">Scent your spring</div>
+  <div class="t-body" style="margin-bottom:1.125rem">These are the candles trending across #CleanTok and Pinterest this spring — organised by room. Tap any card to shop.</div>
+</div>
+<div class="px pb">${cards}</div>
+<div style="margin:0 1.375rem 2rem;background:var(--cream);border-radius:var(--r);padding:.875rem 1rem;border:1px solid var(--border)">
+  <div class="dp-label" style="margin-bottom:.35rem">The one rule</div>
+  <div style="font-family:var(--fs);font-size:14px;font-style:italic;color:var(--ink);line-height:1.75">Never burn more than one scent per floor. Two candles cancel each other out. One room, one candle, one moment.</div>
+</div>`);
+};
+
+// ── FLOWERS ───────────────────────────────────────────────────────────────
+const showFlowers = () => {
+  S.tab='flowers'; save();
+  const cards = FLOWERS.map(f=>`<div class="flower-card">
+    <div class="fc-top">
+      <div class="fc-icon" style="background:${f.bg}">${f.icon}</div>
+      <div>
+        <div class="fc-name">${f.name}</div>
+        <div class="fc-season">In season: ${f.season}</div>
+        <div class="fc-desc">${f.desc}</div>
+        <div class="fc-where">📍 ${f.where}</div>
+      </div>
+    </div>
+    <div class="fc-tip">${f.tip}</div>
+  </div>`).join('');
+
+  render(`${pbar('Flower guide')}${nav()}
+<div class="px pt">
+  <div class="t-section" style="margin-bottom:.35rem">Spring flowers · NJ 2025</div>
+  <div class="t-body" style="margin-bottom:1.125rem">What to buy, where to find it in NJ, and exactly how to style it. Trader Joe\'s is your best friend from March through June.</div>
+</div>
+<div class="px pb">${cards}</div>
+<div style="margin:0 1.375rem 2rem;background:var(--petal);border-radius:var(--rl);border:1px solid var(--blush);padding:.875rem 1.125rem">
+  <div class="dp-label" style="margin-bottom:.35rem">The 5-stem rule</div>
+  <div style="font-family:var(--fs);font-size:14px;font-style:italic;color:#5a2a1a;line-height:1.75">Odd numbers always look more intentional than even. 3 or 5 stems in a simple vessel beats 10 stems in a complicated arrangement. The vase matters more than the flowers.</div>
+</div>`);
+};
+
+// ── GUIDE (email gate — this IS the monetization) ─────────────────────────
+const showGuide = () => {
+  S.tab='guide'; save();
+  if (S.unlocked) {
+    render(`${pbar('Your guide')}${nav()}
+<div style="text-align:center;padding:2rem 1.375rem 1rem">
+  <div style="font-size:36px;margin-bottom:.75rem">🌸</div>
+  <div class="t-section" style="margin-bottom:.35rem">You\'re all unlocked</div>
+  <div class="t-body">All 10 rooms, every task, candle and flower guides — all yours. Your progress saves automatically.</div>
+</div>
+<div class="px">
+  <div class="pdf-preview">
+    <div class="pdf-preview-header"><div class="pdf-title">Bloom · Spring Reset Guide 2025</div><div class="pdf-sub">10 rooms · candle & flower guide · printable PDF</div></div>
+    <div class="pdf-pages">
+      <div class="pdf-page" style="background:#ecf4ee"><span>🌿</span><div class="pdf-page-lbl">Kitchen</div></div>
+      <div class="pdf-page" style="background:var(--petal)"><span>🌸</span><div class="pdf-page-lbl">Bedroom</div></div>
+      <div class="pdf-page" style="background:#fbf3e3"><span>🕯️</span><div class="pdf-page-lbl">Scents</div></div>
+    </div>
+  </div>
+  <button class="btn btn-s" onclick="alert('PDF delivery connects to your email service. Your guide would arrive in your inbox instantly when this is live.')">Download my PDF guide →</button>
+  <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:.5rem">A beautiful printable you\'ll actually use</p>
+</div>
+<div class="gap2"></div>`);
+    return;
+  }
+
+  render(`<div class="guide-cover">
+  <div class="gcover-tag">The free guide</div>
+  <div class="gcover-title">Your complete<br>spring ritual,<br><em>beautifully designed.</em></div>
+  <div class="gcover-sub">A printable guide to all 10 rooms — with candle pairings, flower guides and every task. Enter your email and it\'s yours free.</div>
+</div>${nav()}
+<div class="pdf-preview">
+  <div class="pdf-preview-header"><div class="pdf-title">Bloom · Spring Reset Guide 2025</div><div class="pdf-sub">10 rooms · printable · candle & flower guide</div></div>
+  <div class="pdf-pages">
+    <div class="pdf-page" style="background:#ecf4ee"><span>🌿</span><div class="pdf-page-lbl">Kitchen</div></div>
+    <div class="pdf-page" style="background:var(--petal)"><span>🌸</span><div class="pdf-page-lbl">Bedroom</div></div>
+    <div class="pdf-page" style="background:#fbf3e3"><span>🕯️</span><div class="pdf-page-lbl">Scents</div></div>
+  </div>
+</div>
+<div class="includes px">
+  ${[['🗺️','10 room mood boards','Each room with candle, flower suggestion and one seasonal swap'],['✅','Full task checklists','60+ tasks organised by room and difficulty — print and work through offline'],['🕯️','2025 scent guide','Exactly which candle for which room, with real prices and where to buy in NJ'],['💐','Spring flower guide','What\'s in season, where to find it, how to style it'],['✨','Winter → spring transition','The swaps for textiles, scent and decor that actually signal the season shift']].map(([i,t,d])=>`<div class="inc"><span class="inc-icon">${i}</span><div><div class="inc-t">${t}</div><div class="inc-s">${d}</div></div></div>`).join('')}
+</div>
+<div class="email-gate">
+  <div class="eg-title">Get the full guide free</div>
+  <div class="eg-sub">Enter your email and we unlock all 10 rooms instantly and send your printable guide. No spam. Unsubscribe any time.</div>
+  <div class="eg-row">
+    <input class="eg-in" type="email" id="eIn" placeholder="your@email.com" />
+    <button class="eg-btn" onclick="submitEmail()">Unlock →</button>
+  </div>
+  <div class="eg-note">Free forever · No credit card · No spam</div>
+</div>
+<div class="review-row">
+  <div class="rev-stars">★★★★★</div>
+  <div class="rev-text">"I printed it and left it on the kitchen counter. My husband thought I hired a home organiser. It was free."</div>
+</div>
+<div class="px"><button class="btn-ghost" style="display:block;width:100%;text-align:center;padding-bottom:1.5rem" onclick="setTab('rooms')">Continue with free tasks only</button></div>`);
+};
+
+const submitEmail = () => {
+  const v = el('eIn')?el('eIn').value:'';
+  if (!v||!v.includes('@')) { if(el('eIn'))el('eIn').style.borderColor='var(--rose)'; return; }
+  // ── PRODUCTION: POST to Mailchimp / ConvertKit API here ──
+  // fetch('/api/subscribe', {method:'POST',body:JSON.stringify({email:v})})
+  S.unlocked=true; S.email=v; save();
+  render(`<div class="done-screen">
+    <div style="font-size:48px;margin-bottom:1.125rem">🌸</div>
+    <div class="t-section" style="margin-bottom:.5rem">All unlocked.</div>
+    <p class="t-body" style="max-width:260px;margin:0 auto 2rem">All 10 rooms, every task, every candle and flower guide — plus your printable PDF is on its way to ${v}.</p>
+    <button class="btn btn-s" style="max-width:240px;margin:0 auto" onclick="setTab('rooms')">Start my reset →</button>
+  </div>`);
+};
+
+// ── TIMER ─────────────────────────────────────────────────────────────────
+const showTimer = () => { S.tab='timer'; save(); if(TI)clearInterval(TI); renderTimer(); };
+const renderTimer = () => {
+  const l=S.tLeft, m=Math.floor(l/60), s=l%60;
+  const disp=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const pct=Math.round((1-l/S.tBase)*100);
+  const r = S.activeRoom ? ROOMS.find(x=>x.id===S.activeRoom) : ROOMS[0];
+  const ft = r.tasks.filter(t=>S.unlocked||t.free).slice(0,3);
+  render(`${pbar('Focus mode')}${nav()}
+<div class="gap"></div>
+<div class="timer-box">
+  <div class="t-lbl">Focused time</div>
+  <div class="t-dig">${disp}</div>
+  <div class="t-track"><div class="t-fill" style="width:${pct}%"></div></div>
+  <div class="t-picks">
+    <button class="tp${S.tMode===15?' on':''}" onclick="setT(15)">15 min</button>
+    <button class="tp${S.tMode===30?' on':''}" onclick="setT(30)">30 min</button>
+    <button class="tp${S.tMode===60?' on':''}" onclick="setT(60)">60 min</button>
+  </div>
+  <div class="t-btns">
+    <button class="tb tb-r" onclick="resetT()">Reset</button>
+    <button class="tb tb-s" onclick="togT()">${S.tOn?'Pause':'Start'}</button>
+  </div>
+</div>
+<div style="font-family:var(--fs);font-size:14px;font-style:italic;color:var(--mid);text-align:center;padding:.75rem 2rem 1rem;line-height:1.75">"Put on a podcast. Light a candle. Set the timer. Stop when it rings — no guilt."</div>
+<div style="margin:0 1.375rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.125rem">
+  <div class="task-hd-title" style="margin-bottom:.75rem">Focus tasks</div>
+  ${ft.map(t=>{const dn=!!S.tasks[t.id];return`<div class="tr${dn?' done':''}" onclick="toggleTask('${t.id}')"><div class="chk${dn?' on':''}">${cv()}</div><div class="td"><span class="tn">${t.t}</span><div class="tmeta">${t.m}</div></div></div>`;}).join('')}
+</div><div class="gap2"></div>`);
+};
+const setT = m => { if(TI)clearInterval(TI); S.tOn=false;S.tMode=m;S.tLeft=m*60;S.tBase=m*60;save();renderTimer(); };
+const resetT = () => { if(TI)clearInterval(TI); S.tOn=false;S.tLeft=S.tBase;save();renderTimer(); };
+const togT = () => {
+  if(S.tOn){clearInterval(TI);S.tOn=false;save();renderTimer();return;}
+  S.tOn=true;save();renderTimer();
+  TI=setInterval(()=>{
+    if(S.tLeft<=0){clearInterval(TI);S.tOn=false;S.tLeft=0;save();
+      render(`<div class="done-screen"><div style="font-size:48px;margin-bottom:1.125rem">🌿</div><div class="t-section" style="margin-bottom:.5rem">Session done.</div><p class="t-body" style="max-width:240px;margin:0 auto 2rem">You showed up for your home today. That's the whole point.</p><button class="btn btn-s" style="max-width:220px;margin:0 auto" onclick="setTab('rooms')">See my progress →</button></div>`);return;
+    }
+    S.tLeft--;save();renderTimer();
+  },1000);
+};
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+const tabMap = {diff:showDiff,shop:showShop,scent:showScent,flowers:showFlowers,guide:showGuide};
+if(S.scr==='ob')renderOb();
+else if(S.tab==='timer'){S.tOn=false;save();showRooms();}
+else if(tabMap[S.tab]){tabMap[S.tab]();}
+else if(S.ob.q0!==undefined)showRooms();
+else showWelcome();
+</script>
+</body>
+</html>
